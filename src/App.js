@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect } from "react";
+import API_URLS from "./config/API_URLS";
 
 function App() {
 
   useEffect(() => {
-    axios.get("http://localhost:4000/firstApi").then(response => {
+    axios.get(`${API_URLS.baseUrl}${API_URLS.firstApi}`).then(response => {
       console.log("first api response ", response);
     }).catch(error => {
       console.error('Error fetching data: ', error);
