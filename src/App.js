@@ -6,6 +6,18 @@ import * as yup from 'yup';
 
 function App() {
 
+  const postUserData = async (values) => {
+    try {
+      const response = await axios.post(`${API_URLS.baseUrl}${API_URLS.postUserData}`, {
+        ...values
+      })
+      console.log("response ", response);
+
+    } catch (error) {
+      console.error("Error: ", error);
+    }
+  }
+
   useEffect(() => {
     axios.get(`${API_URLS.baseUrl}${API_URLS.firstApi}`).then(response => {
       console.log("first api response ", response);
@@ -29,6 +41,7 @@ function App() {
     }),
     onSubmit: values => {
       console.log("formik values ", values);
+      postUserData(values);
     },
   });
 
