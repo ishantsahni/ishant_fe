@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div>
-      <p >Home Page Changed</p>
+      <p>Home Page Changed</p>
       <form onSubmit={formik.handleSubmit}>
         <div>
           <label htmlFor="name">Name</label>
