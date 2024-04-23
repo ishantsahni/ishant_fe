@@ -1,6 +1,8 @@
+import { TextField } from "@mui/material";
+
 function CustomTextField() {
     return (
-        <div>Custom Text Field</div>
+        <div><TextField id="outlined-basic" label="Outlined" variant="outlined" /></div>
     )
 }
 
