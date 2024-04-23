@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import HomePage from "./pages/HomePage";
 import AddProductPage from "./pages/AddProductPage";
 import AddUserShoppingDetailsPage from "./pages/AddUserShoppingDetailsPage";
+import RoughPage from "./pages/RoughPage";
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route path="/addProduct" element={<AddProductPage />} />
         <Route path="/addUserShoppingDetails" element={<AddUserShoppingDetailsPage />} />
+        <Route path="/rough" element={<RoughPage />} />
       </Routes>
     </Router >
   );
