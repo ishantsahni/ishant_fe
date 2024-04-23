@@ -7,8 +7,14 @@ function CustomTextField() {
       <TextField
         id="outlined-basic"
         fullWidth
-        variant="outlined"
+        variant="filled"
         placeholder="Enter"
+        classes="!border-none !shadow-inputTextFieldShadow"
+        // InputProps={{
+        //     classes: {
+        //       root: '!border-none !shadow-inputTextFieldShadow',
+        //     },
+        //   }}
       />
     </div>
   );
