@@ -19,7 +19,7 @@ function CustomTextField({label, id, name, type, onChange, value, touched, error
         }}
         InputProps={{
           classes: {
-            notchedOutline: '!border-none', // Remove the border outline
+            notchedOutline: `${touched && errors ? "border-[1px] border-[#ffa9a9]" : "!border-none"}`, // Remove the border outline
           },
         }}
       />
