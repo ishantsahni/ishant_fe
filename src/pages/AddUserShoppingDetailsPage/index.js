@@ -37,6 +37,7 @@ function AddUserShoppingDetailsPage() {
                     id="firstName"
                     name="firstName"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values.firstName}
                     label="First Name"
                     touched={formik.touched.firstName}
@@ -46,6 +47,7 @@ function AddUserShoppingDetailsPage() {
                     id="lastName"
                     name="lastName"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values.lastName}
                     label="Last Name"
                     touched={formik.touched.lastName}
@@ -55,6 +57,7 @@ function AddUserShoppingDetailsPage() {
                     id="age"
                     name="age"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     type="number"
                     value={formik.values.age}
                     label="Age"
@@ -65,6 +68,7 @@ function AddUserShoppingDetailsPage() {
                     id="email"
                     name="email"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values.email}
                     label="Email"
                     touched={formik.touched.email}

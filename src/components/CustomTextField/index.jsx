@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import PropTypes from "prop-types";
 
-function CustomTextField({label, id, name, type, onChange, value, touched, errors}) {
+function CustomTextField({label, id, name, type, onChange, onBlur, value, touched, errors}) {
   return (
     <div>
       <p className="text-[#607083] font-normal text-xs mb-1">{label}<span className="text-[#ffa9a9]">*</span></p>
@@ -10,6 +10,7 @@ function CustomTextField({label, id, name, type, onChange, value, touched, error
         name={name}
         type={type}
         onChange={onChange}
+        onBlur={onBlur}
         value={value}
         fullWidth
         variant="outlined"
@@ -19,7 +20,7 @@ function CustomTextField({label, id, name, type, onChange, value, touched, error
         }}
         InputProps={{
           classes: {
-            notchedOutline: `${touched && errors ? "border-[1px] border-[#ffa9a9]" : "!border-none"}`, // Remove the border outline
+            notchedOutline: `${touched && errors ? "border-[1px] !border-[#ffa9a9]" : "!border-none"}`, // Remove the border outline
           },
         }}
       />
