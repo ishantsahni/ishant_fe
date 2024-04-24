@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        inputTextFieldShadow: "inset -3px -3px 4px rgba(255, 255, 255, 0.9)"
+        inputTextFieldShadow: "inset 3px 3px 4px 0px #f7f7f7"
       }
     },
   },

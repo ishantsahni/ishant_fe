@@ -9,12 +9,14 @@ function CustomTextField() {
         fullWidth
         variant="outlined"
         placeholder="Enter"
-        // sx={{
-        //   '& .MuiOutlinedInput-root fieldset': {
-        //     border: 'none', // Remove the border
-        //     boxShadow: 'inset -3px -3px 4px #FFFFFFE6' // Add custom box shadow
-        //   }
-        // }}
+        classes={{
+          root: "shadow-inputTextFieldShadow"
+        }}
+        InputProps={{
+          classes: {
+            notchedOutline: '!border-none', // Remove the border outline
+          },
+        }}
       />
     </div>
   );
