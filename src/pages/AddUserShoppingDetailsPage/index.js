@@ -56,6 +56,7 @@ function AddUserShoppingDetailsPage() {
                 <CustomTextField
                     id="age"
                     name="age"
+                    disabled
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     type="number"

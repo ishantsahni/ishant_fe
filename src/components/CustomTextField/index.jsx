@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import PropTypes from "prop-types";
 
-function CustomTextField({label, id, name, type, onChange, onBlur, value, touched, errors}) {
+function CustomTextField({label, disabled, id, name, type, onChange, onBlur, value, touched, errors}) {
   return (
     <div>
       <p className="text-[#607083] font-normal text-xs mb-1">{label}<span className="text-[#ffa9a9]">*</span></p>
@@ -13,6 +13,7 @@ function CustomTextField({label, id, name, type, onChange, onBlur, value, touche
         onBlur={onBlur}
         value={value}
         fullWidth
+        disabled={disabled}
         variant="outlined"
         placeholder="Enter"
         classes={{
@@ -34,12 +35,14 @@ function CustomTextField({label, id, name, type, onChange, onBlur, value, touche
 
 CustomTextField.propTypes = {
   label: PropTypes.string,
-  type: PropTypes.string 
+  type: PropTypes.string,
+  disabled: PropTypes.bool
 };
 
 CustomTextField.defaultProps = {
   label: "", 
-  type: "text"
+  type: "text",
+  disabled: false
 };
 
 export default CustomTextField;
