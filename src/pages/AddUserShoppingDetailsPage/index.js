@@ -2,6 +2,13 @@ import { useFormik } from "formik";
 import CustomTextField from "../../components/CustomTextField";
 import { Button } from "@mui/material";
 import * as Yup from 'yup';
+import CustomDropdown from "../../components/CustomDropdown";
+
+const dropdownOptions = [
+    { label: "London", value: 'london' },
+    { label: "Milan", value: 'milan' },
+    { label: "California", value: 'california' },
+]
 
 function AddUserShoppingDetailsPage() {
 
@@ -11,6 +18,7 @@ function AddUserShoppingDetailsPage() {
             lastName: '',
             age: 0,
             email: '',
+            city: ''
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
@@ -21,6 +29,7 @@ function AddUserShoppingDetailsPage() {
                 .required('Required'),
             age: Yup.number("Must be a number").required("Required"),
             email: Yup.string().email('Invalid email address').required('Required'),
+            city: Yup.string().required('Required')
         }),
 
         onSubmit: values => {
@@ -74,6 +83,14 @@ function AddUserShoppingDetailsPage() {
                     label="Email"
                     touched={formik.touched.email}
                     errors={formik.errors.email}
+                />
+                <CustomDropdown
+                    id="city"
+                    name="city"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.city}
+                    dropdownOptions={dropdownOptions}
                 />
                 <Button onClick={() => formik.handleSubmit()} variant="contained">Submit</Button>
             </form>
