@@ -18,8 +18,14 @@ function CustomDropdown() {
           id="dropdown"
           value={selectedOption}
           onChange={handleChange}
+          displayEmpty // Show the empty option as a placeholder
+          renderValue={(selected) => {
+            if(!selected) {
+                return <em>Select</em>
+            }
+            return selected;
+          }}
         >
-          {/* <MenuItem value="">Select</MenuItem> */}
           <MenuItem value="option1">Option 1</MenuItem>
           <MenuItem value="option2">Option 2</MenuItem>
           <MenuItem value="option3">Option 3</MenuItem>
