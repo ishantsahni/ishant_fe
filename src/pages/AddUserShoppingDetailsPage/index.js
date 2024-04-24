@@ -87,6 +87,7 @@ function AddUserShoppingDetailsPage() {
                 <CustomDropdown
                     id="city"
                     name="city"
+                    label="Select City"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.city}

@@ -22,7 +22,7 @@ function CustomDropdown({
     <div>
       <FormControl fullWidth>
         <p className="text-[#607083] font-normal text-xs mb-1">
-          Select an option
+          {label}
           <span className="text-[#ffa9a9]">*</span>
         </p>
         <Select
@@ -54,11 +54,11 @@ function CustomDropdown({
 
 CustomDropdown.propTypes = {
   //   name: PropTypes.string.isRequired, // Required prop
-  // label: PropTypes.string,
+  label: PropTypes.string,
 };
 
 CustomDropdown.defaultProps = {
-  // label: "",
+  label: "",
 };
 
 export default CustomDropdown;
