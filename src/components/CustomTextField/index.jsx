@@ -21,7 +21,7 @@ function CustomTextField({label, disabled, id, name, type, onChange, onBlur, val
         }}
         InputProps={{
           classes: {
-            root: "h-[48px]",
+            root: `h-[48px] ${disabled ? "bg-[#e0e8f6]" : ""}`,
             notchedOutline: `${touched && errors ? "border-[1px] !border-[#ffa9a9]" : "!border-none"}`, // Remove the border outline
           },
         }}
