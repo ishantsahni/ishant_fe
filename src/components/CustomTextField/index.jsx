@@ -7,14 +7,14 @@ function CustomTextField() {
       <TextField
         id="outlined-basic"
         fullWidth
-        variant="filled"
+        variant="outlined"
         placeholder="Enter"
-        classes="!border-none !shadow-inputTextFieldShadow"
-        // InputProps={{
-        //     classes: {
-        //       root: '!border-none !shadow-inputTextFieldShadow',
-        //     },
-        //   }}
+        // sx={{
+        //   '& .MuiOutlinedInput-root fieldset': {
+        //     border: 'none', // Remove the border
+        //     boxShadow: 'inset -3px -3px 4px #FFFFFFE6' // Add custom box shadow
+        //   }
+        // }}
       />
     </div>
   );
