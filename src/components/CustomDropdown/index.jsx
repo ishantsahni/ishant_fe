@@ -10,6 +10,8 @@ function CustomDropdown({
   value,
   onChange,
   onBlur,
+  touched,
+  errors
 }) {
   // const [selectedOption, setSelectedOption] = useState("");
 
@@ -47,6 +49,9 @@ function CustomDropdown({
             </MenuItem>
           ))}
         </Select>
+        <p className="text-[#ffa9a9] font-normal text-xs mb-1">{touched && errors ? (
+         <div>{errors}</div>
+       ) : null}</p>
       </FormControl>
     </div>
   );

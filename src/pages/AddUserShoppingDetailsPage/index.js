@@ -92,6 +92,8 @@ function AddUserShoppingDetailsPage() {
                     onBlur={formik.handleBlur}
                     value={formik.values.city}
                     dropdownOptions={dropdownOptions}
+                    touched={formik.touched.city}
+                    errors={formik.errors.city}
                 />
                 <Button onClick={() => formik.handleSubmit()} variant="contained">Submit</Button>
             </form>
