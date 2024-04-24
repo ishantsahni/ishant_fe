@@ -1,7 +1,12 @@
+import CustomTextField from "../../components/CustomTextField";
+
 function AddUserShoppingDetailsPage() {
     return (
-        <div>
-            Add User Shopping Details Page
+        <div className="mt-[50px] mx-[50px]">
+            <CustomTextField label="First Name" />
+            <CustomTextField label="Last Name" />
+            <CustomTextField label="Age" />
+            <CustomTextField label="Email" />
         </div>
     )
 }
