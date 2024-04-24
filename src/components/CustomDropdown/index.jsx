@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 
-function CustomDropdown({dropdownOptions}) {
+function CustomDropdown({ dropdownOptions }) {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleChange = (event) => {
@@ -29,10 +29,12 @@ function CustomDropdown({dropdownOptions}) {
             return selected;
           }}
         >
-            {dropdownOptions.map((item) => (
-                <MenuItem key={item.value} value={item.value}>{item.label}</MenuItem>
-            ))}
-          
+          <MenuItem value="">Select</MenuItem>
+          {dropdownOptions.map((item) => (
+            <MenuItem key={item.value} value={item.value}>
+              {item.label}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>
@@ -40,10 +42,9 @@ function CustomDropdown({dropdownOptions}) {
 }
 
 CustomDropdown.propTypes = {
-//   name: PropTypes.string.isRequired, // Required prop
+  //   name: PropTypes.string.isRequired, // Required prop
 };
 
-CustomDropdown.defaultProps = {
-};
+CustomDropdown.defaultProps = {};
 
 export default CustomDropdown;
