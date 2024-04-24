@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import PropTypes from "prop-types";
 
-function CustomTextField({label, id, name, type, onChange, value}) {
+function CustomTextField({label, id, name, type, onChange, value, touched, errors}) {
   return (
     <div>
       <p className="text-[#607083] font-normal text-xs mb-1">{label}<span className="text-[#ffa9a9]">*</span></p>
@@ -23,6 +23,9 @@ function CustomTextField({label, id, name, type, onChange, value}) {
           },
         }}
       />
+      <p className="text-[#ffa9a9] font-normal text-xs mb-1">{touched && errors ? (
+         <div>{errors}</div>
+       ) : null}</p>
     </div>
   );
 }

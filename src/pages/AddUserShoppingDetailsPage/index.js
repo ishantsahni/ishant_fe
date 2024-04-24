@@ -39,6 +39,8 @@ function AddUserShoppingDetailsPage() {
                     onChange={formik.handleChange}
                     value={formik.values.firstName}
                     label="First Name"
+                    touched={formik.touched.firstName}
+                    errors={formik.errors.firstName}
                 />
                 <CustomTextField
                     id="lastName"
@@ -46,6 +48,8 @@ function AddUserShoppingDetailsPage() {
                     onChange={formik.handleChange}
                     value={formik.values.lastName}
                     label="Last Name"
+                    touched={formik.touched.lastName}
+                    errors={formik.errors.lastName}
                 />
                 <CustomTextField
                     id="age"
@@ -54,6 +58,8 @@ function AddUserShoppingDetailsPage() {
                     type="number"
                     value={formik.values.age}
                     label="Age"
+                    touched={formik.touched.age}
+                    errors={formik.errors.age}
                 />
                 <CustomTextField
                     id="email"
@@ -61,8 +67,10 @@ function AddUserShoppingDetailsPage() {
                     onChange={formik.handleChange}
                     value={formik.values.email}
                     label="Email"
+                    touched={formik.touched.email}
+                    errors={formik.errors.email}
                 />
-                <Button onClick={() => formik.handleSubmit()} variant="contained">Contained</Button>
+                <Button onClick={() => formik.handleSubmit()} variant="contained">Submit</Button>
             </form>
         </div>
     )
