@@ -3,6 +3,7 @@ import CustomTextField from "../../components/CustomTextField";
 import { Button } from "@mui/material";
 import * as Yup from 'yup';
 import CustomDropdown from "../../components/CustomDropdown";
+import CustomAutoComplete from "../../components/CustomAutoComplete";
 
 const dropdownOptions = [
     { label: "London", value: 'london' },
@@ -26,7 +27,8 @@ function AddUserShoppingDetailsPage() {
             age: 0,
             email: '',
             city: '',
-            country: []
+            country: [],
+            movie: ""
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
@@ -38,7 +40,8 @@ function AddUserShoppingDetailsPage() {
             age: Yup.number("Must be a number").required("Required"),
             email: Yup.string().email('Invalid email address').required('Required'),
             city: Yup.string().required('Required'),
-            country: Yup.array().min(1, 'Atleast one country should be selected').required('Required')
+            country: Yup.array().min(1, 'Atleast one country should be selected').required('Required'),
+            movie: Yup.string().requried
         }),
 
         onSubmit: values => {
@@ -118,6 +121,7 @@ function AddUserShoppingDetailsPage() {
                     touched={formik.touched.country}
                     errors={formik.errors.country}
                 />
+                <CustomAutoComplete />
                 <Button onClick={() => formik.handleSubmit()} variant="contained">Submit</Button>
             </form>
         </div>
