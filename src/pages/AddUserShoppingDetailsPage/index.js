@@ -10,7 +10,7 @@ const dropdownOptions = [
     { label: "California", value: 'california' },
 ]
 
-const drowDownOptionTwo = [
+const dropdownOptionsTwo = [
     { label: "India", value: 'indiz' },
     { label: "Australia", value: 'australia' },
     { label: "Canada", value: 'canada' },
@@ -104,6 +104,17 @@ function AddUserShoppingDetailsPage() {
                     dropdownOptions={dropdownOptions}
                     touched={formik.touched.city}
                     errors={formik.errors.city}
+                />
+                <CustomDropdown
+                    id="country"
+                    name="country"
+                    label="Select country"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.country}
+                    dropdownOptions={dropdownOptionsTwo}
+                    touched={formik.touched.country}
+                    errors={formik.errors.country}
                 />
                 <Button onClick={() => formik.handleSubmit()} variant="contained">Submit</Button>
             </form>
