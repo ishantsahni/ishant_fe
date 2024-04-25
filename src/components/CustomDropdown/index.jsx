@@ -13,6 +13,7 @@ function CustomDropdown({
   onBlur,
   touched,
   errors,
+  multiple
 }) {
   // const [selectedOption, setSelectedOption] = useState("");
   const [isSelectState, setIsSelectState] = useState(false);
@@ -36,6 +37,7 @@ function CustomDropdown({
           value={value}
           onChange={onChange}
           onBlur={onBlur}
+          multiple={multiple}
           classes={{
             root: "h-[48px]"
           }}
@@ -76,10 +78,12 @@ function CustomDropdown({
 CustomDropdown.propTypes = {
   //   name: PropTypes.string.isRequired, // Required prop
   label: PropTypes.string,
+  multiple: PropTypes.bool
 };
 
 CustomDropdown.defaultProps = {
   label: "",
+  multiple: false
 };
 
 export default CustomDropdown;

@@ -11,7 +11,7 @@ const dropdownOptions = [
 ]
 
 const dropdownOptionsTwo = [
-    { label: "India", value: 'indiz' },
+    { label: "India", value: 'india' },
     { label: "Australia", value: 'australia' },
     { label: "Canada", value: 'canada' },
     { label: "USA", value: 'usa' },
@@ -26,8 +26,7 @@ function AddUserShoppingDetailsPage() {
             age: 0,
             email: '',
             city: '',
-            monitor: '',
-            country: ''
+            country: []
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
@@ -109,6 +108,7 @@ function AddUserShoppingDetailsPage() {
                     id="country"
                     name="country"
                     label="Select country"
+                    multiple
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.country}
