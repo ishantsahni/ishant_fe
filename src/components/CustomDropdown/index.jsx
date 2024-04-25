@@ -74,13 +74,17 @@ function CustomDropdown({
               if (selected.length === 0) {
                 return <em>Select a value</em>;
               }
+              if(selected.length > 1) {
+                return `${selected[0]} + ${selected.length - 1}`
+              }
+              return selected;
             } else {
               if (!selected) {
                 return <em>Select</em>;
               }
+              return selected;
             }
 
-            return selected;
           }}
           // inputProps={{ className: "!border-red-500 !border" }}
           sx={{
