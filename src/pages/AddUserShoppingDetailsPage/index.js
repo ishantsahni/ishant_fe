@@ -10,6 +10,13 @@ const dropdownOptions = [
     { label: "California", value: 'california' },
 ]
 
+const drowDownOptionTwo = [
+    { label: "India", value: 'indiz' },
+    { label: "Australia", value: 'australia' },
+    { label: "Canada", value: 'canada' },
+    { label: "USA", value: 'usa' },
+]
+
 function AddUserShoppingDetailsPage() {
 
     const formik = useFormik({
@@ -18,7 +25,8 @@ function AddUserShoppingDetailsPage() {
             lastName: '',
             age: 0,
             email: '',
-            city: ''
+            city: '',
+            monitor: ''
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
