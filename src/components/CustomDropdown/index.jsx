@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
-import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { Select, MenuItem, FormControl, InputLabel, Checkbox } from "@mui/material";
 
 function CustomDropdown({
   label,
@@ -71,6 +71,9 @@ function CustomDropdown({
           <MenuItem value="">Select</MenuItem>
           {dropdownOptions.map((item) => (
             <MenuItem key={item.value} value={item.value}>
+              {multiple ? (
+                <Checkbox checked={value.indexOf(item.value) > -1} /> // Check if the item value is present in the selected values array
+              ) : null}
               {item.label}
             </MenuItem>
           ))}
