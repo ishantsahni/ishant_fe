@@ -96,7 +96,7 @@ function CustomDropdown({
             )
           }
         >
-          {!multiple && <MenuItem value="">Select</MenuItem>}
+          {!multiple && <MenuItem onClick={() => formik.setFieldValue(name, "")} value="">Select</MenuItem>}
           {multiple && (
             <MenuItem onClick={handleToggleAll}>
               {value.length === dropdownOptions.length
