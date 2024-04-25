@@ -18,6 +18,16 @@ function CustomDropdown({
   // const [selectedOption, setSelectedOption] = useState("");
   const [isSelectState, setIsSelectState] = useState(false);
 
+  const handleSelectAll = () => {
+    // Handle logic to select all options
+    onChange(dropdownOptions.map((option) => option.value));
+  };
+
+  const handleUnselectAll = () => {
+    // Handle logic to unselect all options
+    onChange([]);
+  };
+
   // const handleChange = (event) => {
   //   console.log("event value ", event.target.value);
   //   setSelectedOption(event.target.value);
@@ -68,7 +78,14 @@ function CustomDropdown({
             isSelectState ? <FaAngleUp className="mr-[20px]" /> : <FaAngleDown className="mr-[20px]" />
           )}
         >
-          <MenuItem value="">Select</MenuItem>
+          {!multiple && <MenuItem value="">Select</MenuItem>}
+          {multiple && (
+            <MenuItem onClick={handleSelectAll}>Select All</MenuItem>
+          )}
+          {/* "Unselect All" Option */}
+          {multiple && (
+            <MenuItem onClick={handleUnselectAll}>Unselect All</MenuItem>
+          )}
           {dropdownOptions.map((item) => (
             <MenuItem key={item.value} value={item.value}>
               {multiple ? (
