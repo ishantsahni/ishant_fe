@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 
 function CustomDropdown({
@@ -46,6 +47,10 @@ function CustomDropdown({
             "& .MuiOutlinedInput-notchedOutline": {
               borderColor: `${touched && errors ? "#ff0000" : ""}`, // Change the border color
             },
+          }}
+          IconComponent={(props) => {
+            // Conditionally render the icon based on the select state (open or closed)
+            return props.open ? <FaAngleUp /> : <FaAngleDown />;
           }}
         >
           <MenuItem value="">Select</MenuItem>
