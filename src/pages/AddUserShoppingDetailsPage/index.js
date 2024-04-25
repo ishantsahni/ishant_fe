@@ -109,6 +109,7 @@ function AddUserShoppingDetailsPage() {
                     name="country"
                     label="Select country"
                     multiple
+                    formik={formik}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.country}

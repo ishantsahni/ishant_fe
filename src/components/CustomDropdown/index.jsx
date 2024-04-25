@@ -9,6 +9,7 @@ function CustomDropdown({
   id,
   name,
   value,
+  formik,
   onChange,
   onBlur,
   touched,
@@ -18,15 +19,16 @@ function CustomDropdown({
   // const [selectedOption, setSelectedOption] = useState("");
   const [isSelectState, setIsSelectState] = useState(false);
 
-  const handleSelectAll = () => {
-    // Handle logic to select all options
-    onChange(dropdownOptions.map((option) => option.value));
+  const handleToggleAll = () => {
+    // Toggle between selecting all options and clearing the selection
+    const allValues = value.length === dropdownOptions.length ? [] : dropdownOptions.map((option) => option.value);
+    formik.setFieldValue(name, allValues);
   };
 
-  const handleUnselectAll = () => {
-    // Handle logic to unselect all options
-    onChange([]);
-  };
+  // const handleUnselectAll = () => {
+  //   // Handle logic to unselect all options
+  //   onChange([]);
+  // };
 
   // const handleChange = (event) => {
   //   console.log("event value ", event.target.value);
@@ -80,11 +82,9 @@ function CustomDropdown({
         >
           {!multiple && <MenuItem value="">Select</MenuItem>}
           {multiple && (
-            <MenuItem onClick={handleSelectAll}>Select All</MenuItem>
-          )}
-          {/* "Unselect All" Option */}
-          {multiple && (
-            <MenuItem onClick={handleUnselectAll}>Unselect All</MenuItem>
+            <MenuItem onClick={handleToggleAll}>
+              {value.length === dropdownOptions.length ? "Unselect All" : "Select All"}
+            </MenuItem>
           )}
           {dropdownOptions.map((item) => (
             <MenuItem key={item.value} value={item.value}>
@@ -106,12 +106,14 @@ function CustomDropdown({
 CustomDropdown.propTypes = {
   //   name: PropTypes.string.isRequired, // Required prop
   label: PropTypes.string,
-  multiple: PropTypes.bool
+  multiple: PropTypes.bool,
+  formik: PropTypes.any
 };
 
 CustomDropdown.defaultProps = {
   label: "",
-  multiple: false
+  multiple: false,
+  formik: () => {}
 };
 
 export default CustomDropdown;
