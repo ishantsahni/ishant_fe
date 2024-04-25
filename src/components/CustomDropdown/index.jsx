@@ -44,7 +44,7 @@ function CustomDropdown({
           // inputProps={{ className: "!border-red-500 !border" }}
           sx={{
             "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#ff0000", // Change the border color
+              borderColor: `${touched && errors ? "#ff0000" : ""}`, // Change the border color
             },
           }}
         >
