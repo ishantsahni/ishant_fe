@@ -1,24 +1,29 @@
 import { Autocomplete, TextField } from "@mui/material";
 import PropTypes from "prop-types";
 
-function CustomAutoComplete({ options }) {
+function CustomAutoComplete({ options, label }) {
   return (
-    <Autocomplete
-      disablePortal
-      id="combo-box-demo"
-      options={options}
-      sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Movie" />}
-    />
+    <div>
+      <p className="text-[#607083] font-normal text-xs mb-1">
+        {label}
+        <span className="text-[#ffa9a9]">*</span>
+      </p>
+      <Autocomplete
+        disablePortal
+        id="combo-box-demo"
+        options={options}
+        renderInput={(params) => <TextField {...params} />}
+      />
+    </div>
   );
 }
 
 CustomAutoComplete.propTypes = {
-  //   name: PropTypes.string.isRequired, // Required prop
+  label: PropTypes.string,
 };
 
 CustomAutoComplete.defaultProps = {
-  // formik: () => {}
+  label: "",
 };
 
 export default CustomAutoComplete;

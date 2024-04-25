@@ -129,7 +129,10 @@ function AddUserShoppingDetailsPage() {
                     touched={formik.touched.country}
                     errors={formik.errors.country}
                 />
-                <CustomAutoComplete options={movieList} />
+                <CustomAutoComplete
+                    options={movieList}
+                    label="Select Value From AutoComplete"
+                />
                 <Button onClick={() => formik.handleSubmit()} variant="contained">
                     Submit
                 </Button>
