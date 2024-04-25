@@ -11,7 +11,7 @@ function CustomDropdown({
   onChange,
   onBlur,
   touched,
-  errors
+  errors,
 }) {
   // const [selectedOption, setSelectedOption] = useState("");
 
@@ -41,6 +41,12 @@ function CustomDropdown({
             }
             return selected;
           }}
+          // inputProps={{ className: "!border-red-500 !border" }}
+          sx={{
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#ff0000", // Change the border color
+            },
+          }}
         >
           <MenuItem value="">Select</MenuItem>
           {dropdownOptions.map((item) => (
@@ -49,9 +55,9 @@ function CustomDropdown({
             </MenuItem>
           ))}
         </Select>
-        <p className="text-[#ffa9a9] font-normal text-xs mb-1">{touched && errors ? (
-         <div>{errors}</div>
-       ) : null}</p>
+        <p className="text-[#ffa9a9] font-normal text-xs mb-1">
+          {touched && errors ? <div>{errors}</div> : null}
+        </p>
       </FormControl>
     </div>
   );
