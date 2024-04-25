@@ -97,8 +97,9 @@ function AddUserShoppingDetailsPage() {
                     id="city"
                     name="city"
                     label="Select City"
-                    onChange={formik.handleChange}
+                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    formik={formik}
                     value={formik.values.city}
                     dropdownOptions={dropdownOptions}
                     touched={formik.touched.city}
@@ -110,7 +111,7 @@ function AddUserShoppingDetailsPage() {
                     label="Select country"
                     multiple
                     formik={formik}
-                    onChange={formik.handleChange}
+                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.country}
                     dropdownOptions={dropdownOptionsTwo}
