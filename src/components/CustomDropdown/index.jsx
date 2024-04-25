@@ -45,9 +45,17 @@ function CustomDropdown({
           onClose={() => setIsSelectState(false)}
           displayEmpty // Show the empty option as a placeholder
           renderValue={(selected) => {
-            if (!selected) {
-              return <em>Select</em>;
+            console.log("selected value ", selected);
+            if(multiple) {
+              if(selected.length === 0) {
+                return <em>Select a value</em>
+              }
+            } else {
+              if (!selected) {
+                return <em>Select</em>;
+              }
             }
+            
             return selected;
           }}
           // inputProps={{ className: "!border-red-500 !border" }}
