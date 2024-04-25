@@ -1,50 +1,58 @@
 import { useFormik } from "formik";
 import CustomTextField from "../../components/CustomTextField";
 import { Button } from "@mui/material";
-import * as Yup from 'yup';
+import * as Yup from "yup";
 import CustomDropdown from "../../components/CustomDropdown";
 import CustomAutoComplete from "../../components/CustomAutoComplete";
 
 const dropdownOptions = [
-    { label: "London", value: 'london' },
-    { label: "Milan", value: 'milan' },
-    { label: "California", value: 'california' },
-]
+    { label: "London", value: "london" },
+    { label: "Milan", value: "milan" },
+    { label: "California", value: "california" },
+];
 
 const dropdownOptionsTwo = [
-    { label: "India", value: 'india' },
-    { label: "Australia", value: 'australia' },
-    { label: "Canada", value: 'canada' },
-    { label: "USA", value: 'usa' },
-]
+    { label: "India", value: "india" },
+    { label: "Australia", value: "australia" },
+    { label: "Canada", value: "canada" },
+    { label: "USA", value: "usa" },
+];
+
+const movieList = [
+    { label: "Pulp Fiction", value: "pulpFiction" },
+    { label: "Fight Club", value: "fightClub" },
+    { label: "Dark Knight", value: "dark Knight" },
+    { label: "Seven Samurai", value: "sevenSamurai" },
+];
 
 function AddUserShoppingDetailsPage() {
-
     const formik = useFormik({
         initialValues: {
-            firstName: '',
-            lastName: '',
+            firstName: "",
+            lastName: "",
             age: 0,
-            email: '',
-            city: '',
+            email: "",
+            city: "",
             country: [],
-            movie: ""
+            movie: "",
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
-                .max(15, 'Must be 15 characters or less')
-                .required('Required'),
+                .max(15, "Must be 15 characters or less")
+                .required("Required"),
             lastName: Yup.string()
-                .max(20, 'Must be 20 characters or less')
-                .required('Required'),
+                .max(20, "Must be 20 characters or less")
+                .required("Required"),
             age: Yup.number("Must be a number").required("Required"),
-            email: Yup.string().email('Invalid email address').required('Required'),
-            city: Yup.string().required('Required'),
-            country: Yup.array().min(1, 'Atleast one country should be selected').required('Required'),
-            movie: Yup.string().requried
+            email: Yup.string().email("Invalid email address").required("Required"),
+            city: Yup.string().required("Required"),
+            country: Yup.array()
+                .min(1, "Atleast one country should be selected")
+                .required("Required"),
+            movie: Yup.string().requried,
         }),
 
-        onSubmit: values => {
+        onSubmit: (values) => {
             console.log("formik submitted ", values);
         },
     });
@@ -121,11 +129,13 @@ function AddUserShoppingDetailsPage() {
                     touched={formik.touched.country}
                     errors={formik.errors.country}
                 />
-                <CustomAutoComplete />
-                <Button onClick={() => formik.handleSubmit()} variant="contained">Submit</Button>
+                <CustomAutoComplete options={movieList} />
+                <Button onClick={() => formik.handleSubmit()} variant="contained">
+                    Submit
+                </Button>
             </form>
         </div>
-    )
+    );
 }
 
 export default AddUserShoppingDetailsPage;
