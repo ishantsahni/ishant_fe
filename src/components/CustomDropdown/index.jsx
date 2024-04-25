@@ -36,6 +36,9 @@ function CustomDropdown({
           value={value}
           onChange={onChange}
           onBlur={onBlur}
+          classes={{
+            root: "h-[48px]"
+          }}
           onOpen={() => setIsSelectState(true)}
           onClose={() => setIsSelectState(false)}
           displayEmpty // Show the empty option as a placeholder
