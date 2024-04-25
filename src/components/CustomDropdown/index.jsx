@@ -52,7 +52,7 @@ function CustomDropdown({
             },
           }}
           IconComponent={() => (
-            isSelectState ? <FaAngleUp /> : <FaAngleDown />
+            isSelectState ? <FaAngleUp className="mr-[20px]" /> : <FaAngleDown className="mr-[20px]" />
           )}
         >
           <MenuItem value="">Select</MenuItem>
