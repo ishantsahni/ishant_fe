@@ -38,7 +38,7 @@ function AddUserShoppingDetailsPage() {
             age: Yup.number("Must be a number").required("Required"),
             email: Yup.string().email('Invalid email address').required('Required'),
             city: Yup.string().required('Required'),
-            country: Yup.string().required('Required')
+            country: Yup.array().min(1, 'Atleast one country should be selected').required('Required')
         }),
 
         onSubmit: values => {
