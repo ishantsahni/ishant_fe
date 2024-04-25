@@ -26,7 +26,8 @@ function AddUserShoppingDetailsPage() {
             age: 0,
             email: '',
             city: '',
-            monitor: ''
+            monitor: '',
+            country: ''
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
@@ -37,7 +38,8 @@ function AddUserShoppingDetailsPage() {
                 .required('Required'),
             age: Yup.number("Must be a number").required("Required"),
             email: Yup.string().email('Invalid email address').required('Required'),
-            city: Yup.string().required('Required')
+            city: Yup.string().required('Required'),
+            country: Yup.string().required('Required')
         }),
 
         onSubmit: values => {
