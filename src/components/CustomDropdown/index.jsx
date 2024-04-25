@@ -96,7 +96,11 @@ function CustomDropdown({
             )
           }
         >
-          {!multiple && <MenuItem onClick={() => formik.setFieldValue(name, "")} value="">Select</MenuItem>}
+          {!multiple && (
+            <MenuItem onClick={() => formik.setFieldValue(name, "")} value="">
+              Select
+            </MenuItem>
+          )}
           {multiple && (
             <MenuItem onClick={handleToggleAll}>
               {value.length === dropdownOptions.length
@@ -108,7 +112,14 @@ function CustomDropdown({
             <MenuItem
               onClick={() => {
                 if (multiple) {
-                  formik.setFieldValue(name, [...value, item.value]);
+                  if (value.indexOf(item.value) > -1) {
+                    formik.setFieldValue(
+                      name,
+                      value.filter((singleItem) => singleItem !== item.value)
+                    );
+                  } else {
+                    formik.setFieldValue(name, [...value, item.value]);
+                  }
                 } else {
                   formik.setFieldValue(name, item.value);
                 }
