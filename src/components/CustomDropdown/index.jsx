@@ -15,6 +15,7 @@ function CustomDropdown({
   errors,
 }) {
   // const [selectedOption, setSelectedOption] = useState("");
+  const [isSelectState, setIsSelectState] = useState(false);
 
   // const handleChange = (event) => {
   //   console.log("event value ", event.target.value);
@@ -35,6 +36,8 @@ function CustomDropdown({
           value={value}
           onChange={onChange}
           onBlur={onBlur}
+          onOpen={() => setIsSelectState(true)}
+          onClose={() => setIsSelectState(false)}
           displayEmpty // Show the empty option as a placeholder
           renderValue={(selected) => {
             if (!selected) {
@@ -48,10 +51,9 @@ function CustomDropdown({
               borderColor: `${touched && errors ? "#ff0000" : ""}`, // Change the border color
             },
           }}
-          IconComponent={(props) => {
-            // Conditionally render the icon based on the select state (open or closed)
-            return props.open ? <FaAngleUp /> : <FaAngleDown />;
-          }}
+          IconComponent={() => (
+            isSelectState ? <FaAngleUp /> : <FaAngleDown />
+          )}
         >
           <MenuItem value="">Select</MenuItem>
           {dropdownOptions.map((item) => (
