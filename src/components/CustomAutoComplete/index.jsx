@@ -12,7 +12,7 @@ function CustomAutoComplete({ options, label }) {
         disablePortal
         id="combo-box-demo"
         options={options}
-        renderInput={(params) => <TextField {...params} />}
+        renderInput={(params) => <TextField {...params} placeholder="Type here to search..." />}
       />
     </div>
   );
