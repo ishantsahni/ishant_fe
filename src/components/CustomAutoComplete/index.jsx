@@ -22,7 +22,7 @@ function CustomAutoComplete({
         disablePortal
         id={id}
         classes={{
-          inputRoot: "h-[48px] !pt-[5px]"
+          inputRoot: `h-[48px] !pt-[5px]`,
         }}
         name={name}
         value={value}
@@ -32,6 +32,11 @@ function CustomAutoComplete({
         renderInput={(params) => (
           <TextField
             {...params}
+            sx={{
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: touched && errors ? "#ffa9a9" : "", // Conditional border color
+              },
+            }}
             placeholder="Type here to search..."
           />
         )}
