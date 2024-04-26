@@ -49,7 +49,7 @@ function AddUserShoppingDetailsPage() {
             country: Yup.array()
                 .min(1, "Atleast one country should be selected")
                 .required("Required"),
-            movie: Yup.string().requried,
+            movie: Yup.string().required('Required'),
         }),
 
         onSubmit: (values) => {
@@ -140,7 +140,10 @@ function AddUserShoppingDetailsPage() {
                     touched={formik.touched.movie}
                     errors={formik.errors.movie}
                 />
-                <Button onClick={() => formik.handleSubmit()} variant="contained">
+                <Button onClick={() => {
+                    console.log("click worked");
+                    formik.handleSubmit();
+                }} variant="contained">
                     Submit
                 </Button>
             </form>
