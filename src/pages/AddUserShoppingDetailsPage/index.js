@@ -35,6 +35,7 @@ function AddUserShoppingDetailsPage() {
             city: "",
             country: [],
             movie: "",
+            manyMovies: [],
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
@@ -49,7 +50,10 @@ function AddUserShoppingDetailsPage() {
             country: Yup.array()
                 .min(1, "Atleast one country should be selected")
                 .required("Required"),
-            movie: Yup.string().required('Required'),
+            movie: Yup.string().required("Required"),
+            manyMovies: Yup.array()
+                .min(1, "Atleast one movie should be selected")
+                .required("Required"),
         }),
 
         onSubmit: (values) => {
@@ -141,10 +145,25 @@ function AddUserShoppingDetailsPage() {
                     touched={formik.touched.movie}
                     errors={formik.errors.movie}
                 />
-                <Button onClick={() => {
-                    console.log("click worked");
-                    formik.handleSubmit();
-                }} variant="contained">
+                <CustomAutoComplete
+                    label="Select mulitple movies"
+                    id="manyMovies"
+                    name="manyMovies"
+                    options={movieList}
+                    formik={formik}
+                    // onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.manyMovies}
+                    touched={formik.touched.manyMovies}
+                    errors={formik.errors.manyMovies}
+                />
+                <Button
+                    onClick={() => {
+                        console.log("click worked");
+                        formik.handleSubmit();
+                    }}
+                    variant="contained"
+                >
                     Submit
                 </Button>
             </form>
