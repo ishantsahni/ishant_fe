@@ -19,10 +19,10 @@ const dropdownOptionsTwo = [
 ];
 
 const movieList = [
-    { label: "Pulp Fiction", value: "pulpFiction" },
-    { label: "Fight Club", value: "fightClub" },
-    { label: "Dark Knight", value: "dark Knight" },
-    { label: "Seven Samurai", value: "sevenSamurai" },
+    { label: "Pulp Fiction", value: "Pulp Fiction" },
+    { label: "Fight Club", value: "Fight Club" },
+    { label: "Dark Knight", value: "Dark Knight" },
+    { label: "Seven Samurai", value: "Seven Samurai" },
 ];
 
 function AddUserShoppingDetailsPage() {
@@ -134,7 +134,8 @@ function AddUserShoppingDetailsPage() {
                     id="movie"
                     name="movie"
                     options={movieList}
-                    onChange={formik.handleChange}
+                    formik={formik}
+                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.movie}
                     touched={formik.touched.movie}

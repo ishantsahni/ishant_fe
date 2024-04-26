@@ -11,6 +11,7 @@ function CustomAutoComplete({
   onBlur,
   touched,
   errors,
+  formik
 }) {
   return (
     <div>
@@ -26,7 +27,10 @@ function CustomAutoComplete({
         }}
         name={name}
         value={value}
-        onChange={onChange}
+        onChange={(event, newValue) => {
+          console.log("event value ", event, newValue);
+          formik.setFieldValue("movie", newValue?.value); // Update formik state
+        }}
         onBlur={onBlur}
         options={options}
         renderInput={(params) => (
