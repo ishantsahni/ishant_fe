@@ -11,7 +11,8 @@ function CustomAutoComplete({
   onBlur,
   touched,
   errors,
-  formik
+  formik,
+  multiple
 }) {
   return (
     <div>
@@ -29,7 +30,11 @@ function CustomAutoComplete({
         value={value}
         onChange={(event, newValue) => {
           console.log("event value ", event, newValue);
-          formik.setFieldValue(name, newValue?.value); // Update formik state
+          if (multiple) {
+            formik.setFieldValue(name, newValue?.value); // Update formik state
+          } else {
+            formik.setFieldValue(name, [...value, newValue.value]);
+          }
         }}
         onBlur={onBlur}
         options={options}
@@ -54,10 +59,12 @@ function CustomAutoComplete({
 
 CustomAutoComplete.propTypes = {
   label: PropTypes.string,
+  multiple: PropTypes.bool
 };
 
 CustomAutoComplete.defaultProps = {
   label: "",
+  multiple: false
 };
 
 export default CustomAutoComplete;

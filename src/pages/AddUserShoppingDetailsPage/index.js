@@ -151,6 +151,7 @@ function AddUserShoppingDetailsPage() {
                     name="manyMovies"
                     options={movieList}
                     formik={formik}
+                    mulitiple
                     // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.manyMovies}
