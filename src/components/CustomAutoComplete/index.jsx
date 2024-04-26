@@ -29,7 +29,7 @@ function CustomAutoComplete({
         value={value}
         onChange={(event, newValue) => {
           console.log("event value ", event, newValue);
-          formik.setFieldValue("movie", newValue?.value); // Update formik state
+          formik.setFieldValue(name, newValue?.value); // Update formik state
         }}
         onBlur={onBlur}
         options={options}
