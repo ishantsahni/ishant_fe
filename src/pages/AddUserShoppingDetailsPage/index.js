@@ -6,6 +6,7 @@ import CustomDropdown from "../../components/CustomDropdown";
 import CustomAutoComplete from "../../components/CustomAutoComplete";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import CustomRadioButton from "../../components/CustomRadioButton";
 
 const dropdownOptions = [
     { label: "London", value: "london" },
@@ -183,6 +184,7 @@ function AddUserShoppingDetailsPage() {
                     isLoading={isLoading}
                     setIsLoading={setIsLoading}
                 />
+                <CustomRadioButton />
                 <Button
                     onClick={() => {
                         console.log("click worked");
