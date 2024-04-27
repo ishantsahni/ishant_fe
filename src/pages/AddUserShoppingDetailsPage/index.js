@@ -4,6 +4,8 @@ import { Button } from "@mui/material";
 import * as Yup from "yup";
 import CustomDropdown from "../../components/CustomDropdown";
 import CustomAutoComplete from "../../components/CustomAutoComplete";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const dropdownOptions = [
     { label: "London", value: "london" },
@@ -26,6 +28,20 @@ const movieList = [
 ];
 
 function AddUserShoppingDetailsPage() {
+    const [cityOptions, setCityOptions] = useState([]);
+
+    useEffect(() => {
+        axios.get(`https://onecrmdev.tataaig.com/lambda/common/locationMaster?search=da&limit=10`).then(response => {
+            console.log("first api response ", response);
+            setCityOptions(response?.data?.data.map(item => ({
+                label: item.label,
+                value: item.label
+            })))
+        }).catch(error => {
+            console.error('Error fetching data: ', error);
+        })
+    }, []);
+
     const formik = useFormik({
         initialValues: {
             firstName: "",
@@ -61,7 +77,7 @@ function AddUserShoppingDetailsPage() {
         },
     });
 
-    console.log("formik values outside ", formik);
+    console.log("formik values outside ", formik, cityOptions);
 
     return (
         <div className="mt-[50px] mx-[50px]">
@@ -149,7 +165,7 @@ function AddUserShoppingDetailsPage() {
                     label="Select mulitple movies"
                     id="manyMovies"
                     name="manyMovies"
-                    options={movieList}
+                    options={cityOptions}
                     formik={formik}
                     multipleSelection={true}
                     // onChange={formik.handleChange}
