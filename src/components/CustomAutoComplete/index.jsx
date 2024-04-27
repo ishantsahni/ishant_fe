@@ -61,7 +61,7 @@ function CustomAutoComplete({
         }}
         onBlur={handleBlur}
         options={
-          value.includes("Select All")
+          value.indexOf("Select All") > -1
             ? [{ label: "Unselect All", value: "Unselect All" }, ...options]
             : [{ label: "Select All", value: "Select All" }, ...options]
         }
@@ -85,7 +85,11 @@ function CustomAutoComplete({
                   disabled={
                     ["Select All", "Unselect All"].indexOf(option.value) > -1
                       ? false
-                      : true
+                      : value.indexOf("Select All") > -1
+                      ? true
+                      : value.indexOf("Unselect All") > -1
+                      ? true
+                      : false
                   }
                   {...props}
                 >
