@@ -30,6 +30,7 @@ const movieList = [
 function AddUserShoppingDetailsPage() {
     const [cityOptions, setCityOptions] = useState([]);
     const [searchString, setSearchString] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         axios.get(`https://onecrmdev.tataaig.com/lambda/common/locationMaster?search=${searchString}&limit=10`).then(response => {
@@ -38,6 +39,7 @@ function AddUserShoppingDetailsPage() {
                 label: item.label,
                 value: item.label
             })))
+            setIsLoading(false);
         }).catch(error => {
             console.error('Error fetching data: ', error);
         })
@@ -162,6 +164,8 @@ function AddUserShoppingDetailsPage() {
                     value={formik.values.movie}
                     touched={formik.touched.movie}
                     errors={formik.errors.movie}
+                    isLoading={isLoading}
+                    setIsLoading={setIsLoading}
                 />
                 <CustomAutoComplete
                     label="Select mulitple movies"
@@ -176,6 +180,8 @@ function AddUserShoppingDetailsPage() {
                     value={formik.values.manyMovies}
                     touched={formik.touched.manyMovies}
                     errors={formik.errors.manyMovies}
+                    isLoading={isLoading}
+                    setIsLoading={setIsLoading}
                 />
                 <Button
                     onClick={() => {
