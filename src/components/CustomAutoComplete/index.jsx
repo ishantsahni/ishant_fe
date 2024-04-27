@@ -54,18 +54,6 @@ function CustomAutoComplete({
     );
   };
 
-  // const renderTags = (value, getTagProps) =>
-  //   value.map((option, index) => (
-  //     <Chip
-  //       key={index}
-  //       label={label}
-  //       // {...getTagProps({ index })}
-  //       onDelete={() => {
-  //         const newValue = value.filter((val) => val !== option);
-  //         formik.setFieldValue(name, newValue);
-  //       }}
-  //     />
-  //   ));
 
   return (
     <div>
