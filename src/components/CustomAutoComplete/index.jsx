@@ -1,5 +1,6 @@
 import { Autocomplete, Checkbox, TextField } from "@mui/material";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 function CustomAutoComplete({
   options,
@@ -14,6 +15,15 @@ function CustomAutoComplete({
   formik,
   multipleSelection,
 }) {
+  const [open, setOpen] = useState(false);
+
+  const handleBlur = (event) => {
+    // Delay closing the dropdown to handle click events
+    setTimeout(() => {
+      setOpen(false);
+      onBlur(event);
+    }, 100);
+  };
 
   return (
     <div>
@@ -30,6 +40,9 @@ function CustomAutoComplete({
         name={name}
         multiple={multipleSelection}
         value={value}
+        open={open}
+        onOpen={() => setOpen(true)}
+        onClose={() => {}}
         onChange={(event, newValue) => {
           console.log("event value ", event, newValue);
           if (multipleSelection) {
@@ -46,7 +59,7 @@ function CustomAutoComplete({
             formik.setFieldValue(name, newValue?.value); // Update formik state
           }
         }}
-        onBlur={onBlur}
+        onBlur={handleBlur}
         options={options}
         getOptionLabel={
           multipleSelection
@@ -71,8 +84,17 @@ function CustomAutoComplete({
                     style={{ marginRight: 8 }} // Adjust spacing as needed
                     checked={selected}
                   /> */}
-                  <Checkbox checked={value.indexOf(selected) > -1} />
-                  {(option.label)}
+                  <Checkbox
+                    checked={value.includes(option.value)}
+                    onChange={() => {
+                      const isSelected = value.includes(option.value);
+                      const selectedValues = isSelected
+                        ? value.filter((val) => val !== option.value)
+                        : [...value, option.value];
+                      formik.setFieldValue(name, selectedValues);
+                    }}
+                  />
+                  {option.label}
                 </li>
               )
             : undefined
@@ -86,6 +108,8 @@ function CustomAutoComplete({
               },
             }}
             placeholder="Type here to search..."
+            onFocus={() => setOpen(true)}
+            onBlur={handleBlur}
           />
         )}
       />
