@@ -86,6 +86,7 @@ function AddUserShoppingDetailsPage() {
     return (
         <div className="mt-[50px] mx-[50px]">
             <form>
+                <CustomRadioButton />
                 <CustomTextField
                     id="firstName"
                     name="firstName"
@@ -184,7 +185,6 @@ function AddUserShoppingDetailsPage() {
                     isLoading={isLoading}
                     setIsLoading={setIsLoading}
                 />
-                <CustomRadioButton />
                 <Button
                     onClick={() => {
                         console.log("click worked");
