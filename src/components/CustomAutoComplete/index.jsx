@@ -12,7 +12,7 @@ function CustomAutoComplete({
   touched,
   errors,
   formik,
-  multiple,
+  multipleSelection,
 }) {
   const getOptionLabel = (option) => {
     console.log("option ", option);
@@ -33,10 +33,11 @@ function CustomAutoComplete({
           inputRoot: `h-[48px] !pt-[5px]`,
         }}
         name={name}
+        multiple={multipleSelection}
         value={value}
         onChange={(event, newValue) => {
           console.log("event value ", event, newValue);
-          if (multiple) {
+          if (multipleSelection) {
             formik.setFieldValue(name, [...value, newValue.value]);
           } else {
             formik.setFieldValue(name, newValue?.value); // Update formik state
@@ -45,13 +46,13 @@ function CustomAutoComplete({
         onBlur={onBlur}
         options={options}
         getOptionLabel={
-          multiple
+          multipleSelection
             ? (option) =>
                 option && typeof option === "object" ? option.label || "" : ""
             : undefined
         }
         renderOption={
-          multiple
+          multipleSelection
             ? (props, option, { selected }) => (
                 <li {...props}>
                   <Checkbox
@@ -86,12 +87,12 @@ function CustomAutoComplete({
 
 CustomAutoComplete.propTypes = {
   label: PropTypes.string,
-  multiple: PropTypes.bool,
+  multipleSelection: PropTypes.bool,
 };
 
 CustomAutoComplete.defaultProps = {
   label: "",
-  multiple: false,
+  multipleSelection: false,
 };
 
 export default CustomAutoComplete;
