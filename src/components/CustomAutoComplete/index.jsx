@@ -1,4 +1,4 @@
-import { Autocomplete, Checkbox, TextField } from "@mui/material";
+import { Autocomplete, Checkbox, MenuItem, TextField } from "@mui/material";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
@@ -77,7 +77,7 @@ function CustomAutoComplete({
         renderOption={
           multipleSelection
             ? (props, option, { selected }) => (
-                <li {...props}>
+                <MenuItem {...props}>
                   <Checkbox
                     checked={value.includes(option.value)}
                     onChange={() => {
@@ -89,7 +89,7 @@ function CustomAutoComplete({
                     }}
                   />
                   {option.label}
-                </li>
+                </MenuItem>
               )
             : undefined
         }
