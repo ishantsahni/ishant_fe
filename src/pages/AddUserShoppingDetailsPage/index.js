@@ -29,9 +29,10 @@ const movieList = [
 
 function AddUserShoppingDetailsPage() {
     const [cityOptions, setCityOptions] = useState([]);
+    const [searchString, setSearchString] = useState("");
 
     useEffect(() => {
-        axios.get(`https://onecrmdev.tataaig.com/lambda/common/locationMaster?search=da&limit=10`).then(response => {
+        axios.get(`https://onecrmdev.tataaig.com/lambda/common/locationMaster?search=${searchString}&limit=10`).then(response => {
             console.log("first api response ", response);
             setCityOptions(response?.data?.data.map(item => ({
                 label: item.label,
@@ -40,7 +41,7 @@ function AddUserShoppingDetailsPage() {
         }).catch(error => {
             console.error('Error fetching data: ', error);
         })
-    }, []);
+    }, [searchString]);
 
     const formik = useFormik({
         initialValues: {
@@ -153,8 +154,9 @@ function AddUserShoppingDetailsPage() {
                     label="Select Value From AutoComplete"
                     id="movie"
                     name="movie"
-                    options={movieList}
+                    options={cityOptions}
                     formik={formik}
+                    setSearchString={setSearchString}
                     // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.movie}
@@ -170,6 +172,7 @@ function AddUserShoppingDetailsPage() {
                     multipleSelection={true}
                     // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    setSearchString={setSearchString}
                     value={formik.values.manyMovies}
                     touched={formik.touched.manyMovies}
                     errors={formik.errors.manyMovies}

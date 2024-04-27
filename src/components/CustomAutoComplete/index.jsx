@@ -20,6 +20,7 @@ function CustomAutoComplete({
   errors,
   formik,
   multipleSelection,
+  setSearchString
 }) {
   const [open, setOpen] = useState(false);
 
@@ -82,6 +83,7 @@ function CustomAutoComplete({
         open={open}
         onOpen={() => setOpen(true)}
         onClose={() => {}}
+        onInputChange={(event) =>  setSearchString(event.target.value || "")}
         onChange={(event, newValue) => {
           console.log("event value ", event, newValue);
           if (multipleSelection) {
@@ -100,9 +102,9 @@ function CustomAutoComplete({
         }}
         onBlur={handleBlur}
         options={
-          value.indexOf("Select All") > -1
+          multipleSelection ? (value.indexOf("Select All") > -1
             ? [{ label: "Unselect All", value: "Unselect All" }, ...options]
-            : [{ label: "Select All", value: "Select All" }, ...options]
+            : [{ label: "Select All", value: "Select All" }, ...options]) : options
         }
         getOptionLabel={
           multipleSelection
