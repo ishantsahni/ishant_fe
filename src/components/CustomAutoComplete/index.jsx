@@ -77,7 +77,9 @@ function CustomAutoComplete({
         renderOption={
           multipleSelection
             ? (props, option, { selected }) => (
-                <MenuItem disabled {...props}>
+                <MenuItem disabled={(value.includes("Select All") || value.includes("Unselect All")) ? true : false }
+                {...props}
+                >
                   <Checkbox
                     checked={value.includes(option.value)}
                     onChange={() => {
