@@ -39,12 +39,12 @@ function CustomAutoComplete({
           console.log("event value ", event, newValue);
           if (multipleSelection) {
             console.log("setting multiple movies ", value, newValue);
-            const newValueArray = newValue.map(item => {
-              if(item instanceof Object) {
+            const newValueArray = newValue.map((item) => {
+              if (item instanceof Object) {
                 return item.value;
               }
               return item;
-            })
+            });
             console.log("newValueArray", newValueArray);
             formik.setFieldValue(name, [...newValueArray]);
           } else {
@@ -55,12 +55,15 @@ function CustomAutoComplete({
         options={options}
         getOptionLabel={
           multipleSelection
-            ? (option) =>
-                {
-                  console.log("get option label ", option);
-                  return option;
-                  // return option && typeof option === "object" ? option.label || "" : ""
+            ? (option) => {
+                console.log("multiple option ", option);
+                if (typeof option === "string") {
+                  return option; // Return string directly for string options
+                } else if (option && typeof option === "object") {
+                  return option.label || ""; // Return label property for object options
                 }
+                return "";
+              }
             : undefined
         }
         renderOption={
