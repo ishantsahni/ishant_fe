@@ -56,7 +56,11 @@ function CustomAutoComplete({
         getOptionLabel={
           multipleSelection
             ? (option) =>
-                option && typeof option === "object" ? option.label || "" : ""
+                {
+                  console.log("get option label ", option);
+                  return option;
+                  // return option && typeof option === "object" ? option.label || "" : ""
+                }
             : undefined
         }
         renderOption={
