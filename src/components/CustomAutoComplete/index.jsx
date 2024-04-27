@@ -70,13 +70,14 @@ function CustomAutoComplete({
           multipleSelection
             ? (props, option, { selected }) => (
                 <li {...props}>
-                  <Checkbox
+                  {/* <Checkbox
                     icon={<span className="MuiCheckbox-icon" />}
                     checkedIcon={<span className="MuiCheckbox-icon" />}
                     style={{ marginRight: 8 }} // Adjust spacing as needed
                     checked={selected}
-                  />
-                  {option.label}
+                  /> */}
+                  <Checkbox checked={value.indexOf(selected) > -1} />
+                  {(option.label)}
                 </li>
               )
             : undefined
