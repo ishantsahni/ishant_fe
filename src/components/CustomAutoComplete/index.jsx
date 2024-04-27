@@ -1,4 +1,10 @@
-import { Autocomplete, Checkbox, MenuItem, TextField } from "@mui/material";
+import {
+  Autocomplete,
+  Checkbox,
+  Chip,
+  MenuItem,
+  TextField,
+} from "@mui/material";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
@@ -24,6 +30,39 @@ function CustomAutoComplete({
       onBlur(event);
     }, 100);
   };
+
+  const renderTags = (value, getTagProps) => {
+    const firstChip = value[0];
+    return (
+      <>
+        {value.length >= 1 && (
+          <Chip
+            // key={index}
+            label={firstChip}
+            // {...getTagProps({ index })}
+            onDelete={() => {
+              const newValue = value.filter((val) => val !== firstChip);
+              formik.setFieldValue(name, newValue);
+            }}
+          />
+        )}
+        {value.length >= 2 && <p>{` + ${value.length - 1}`}</p>}
+      </>
+    );
+  };
+
+  // const renderTags = (value, getTagProps) =>
+  //   value.map((option, index) => (
+  //     <Chip
+  //       key={index}
+  //       label={label}
+  //       // {...getTagProps({ index })}
+  //       onDelete={() => {
+  //         const newValue = value.filter((val) => val !== option);
+  //         formik.setFieldValue(name, newValue);
+  //       }}
+  //     />
+  //   ));
 
   return (
     <div>
@@ -76,6 +115,11 @@ function CustomAutoComplete({
                 }
                 return "";
               }
+            : undefined
+        }
+        renderTags={
+          multipleSelection
+            ? (value, getTagProps) => renderTags(value, getTagProps)
             : undefined
         }
         renderOption={
