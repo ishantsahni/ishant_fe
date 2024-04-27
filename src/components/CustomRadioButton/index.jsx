@@ -1,7 +1,9 @@
-import { Radio, RadioGroup } from "@mui/material";
+import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import { useState } from "react";
 
 function CustomRadioButton() {
   const radioCount = 5;
+  const [selectedRadio, setSelectedRadio] = useState(0);
   return (
     <div>
       <RadioGroup
@@ -11,11 +13,7 @@ function CustomRadioButton() {
         defaultValue="top"
       >
         {Array.from({ length: radioCount }, (_, index) => (
-          <Radio
-            key={index}
-            value={`option-${index + 1}`}
-            inputProps={{ "aria-label": `Option ${index + 1}` }}
-          />
+          <FormControlLabel key={index} labelPlacement="top" value={`${index+1}`} control={<Radio />} label={`${index+1}`} />
         ))}
       </RadioGroup>
     </div>
