@@ -1,4 +1,4 @@
-import { Autocomplete, TextField } from "@mui/material";
+import { Autocomplete, Checkbox, TextField } from "@mui/material";
 import PropTypes from "prop-types";
 
 function CustomAutoComplete({
@@ -12,8 +12,14 @@ function CustomAutoComplete({
   touched,
   errors,
   formik,
-  multiple
+  multiple,
 }) {
+  const getOptionLabel = (option) => {
+    console.log("option ", option);
+    // Ensure that `option` is a valid object and return its label property
+    return option && typeof option === "object" ? option.label || "" : "";
+  };
+
   return (
     <div>
       <p className="text-[#607083] font-normal text-xs mb-1">
@@ -31,13 +37,34 @@ function CustomAutoComplete({
         onChange={(event, newValue) => {
           console.log("event value ", event, newValue);
           if (multiple) {
-            formik.setFieldValue(name, newValue?.value); // Update formik state
-          } else {
             formik.setFieldValue(name, [...value, newValue.value]);
+          } else {
+            formik.setFieldValue(name, newValue?.value); // Update formik state
           }
         }}
         onBlur={onBlur}
         options={options}
+        getOptionLabel={
+          multiple
+            ? (option) =>
+                option && typeof option === "object" ? option.label || "" : ""
+            : undefined
+        }
+        renderOption={
+          multiple
+            ? (props, option, { selected }) => (
+                <li {...props}>
+                  <Checkbox
+                    icon={<span className="MuiCheckbox-icon" />}
+                    checkedIcon={<span className="MuiCheckbox-icon" />}
+                    style={{ marginRight: 8 }} // Adjust spacing as needed
+                    checked={selected}
+                  />
+                  {option.label}
+                </li>
+              )
+            : undefined
+        }
         renderInput={(params) => (
           <TextField
             {...params}
@@ -59,12 +86,12 @@ function CustomAutoComplete({
 
 CustomAutoComplete.propTypes = {
   label: PropTypes.string,
-  multiple: PropTypes.bool
+  multiple: PropTypes.bool,
 };
 
 CustomAutoComplete.defaultProps = {
   label: "",
-  multiple: false
+  multiple: false,
 };
 
 export default CustomAutoComplete;
