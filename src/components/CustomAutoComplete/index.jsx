@@ -14,11 +14,6 @@ function CustomAutoComplete({
   formik,
   multipleSelection,
 }) {
-  const getOptionLabel = (option) => {
-    console.log("option ", option);
-    // Ensure that `option` is a valid object and return its label property
-    return option && typeof option === "object" ? option.label || "" : "";
-  };
 
   return (
     <div>
