@@ -60,7 +60,11 @@ function CustomAutoComplete({
           }
         }}
         onBlur={handleBlur}
-        options={value.includes("Select All") ? [{label: "Unselect All", value: "Unselect All"}, ...options] : [{label: "Select All", value: "Select All"}, ...options]}
+        options={
+          value.includes("Select All")
+            ? [{ label: "Unselect All", value: "Unselect All" }, ...options]
+            : [{ label: "Select All", value: "Select All" }, ...options]
+        }
         getOptionLabel={
           multipleSelection
             ? (option) => {
@@ -77,8 +81,13 @@ function CustomAutoComplete({
         renderOption={
           multipleSelection
             ? (props, option, { selected }) => (
-                <MenuItem disabled={(value.includes("Select All") || value.includes("Unselect All")) ? true : false }
-                {...props}
+                <MenuItem
+                  disabled={
+                    ["Select All", "Unselect All"].indexOf(option.value) > -1
+                      ? false
+                      : true
+                  }
+                  {...props}
                 >
                   <Checkbox
                     checked={value.includes(option.value)}
