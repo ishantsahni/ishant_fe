@@ -96,11 +96,17 @@ function CustomAutoComplete({
                   <Checkbox
                     checked={value.includes(option.value)}
                     onChange={() => {
-                      const isSelected = value.includes(option.value);
-                      const selectedValues = isSelected
-                        ? value.filter((val) => val !== option.value)
-                        : [...value, option.value];
-                      formik.setFieldValue(name, selectedValues);
+                      if (option.value === "Select All") {
+                        formik.setFieldValue(name, ["Select All"]);
+                      } else if (option.value === "Unselect All") {
+                        formik.setFieldValue(name, []);
+                      } else {
+                        const isSelected = value.includes(option.value);
+                        const selectedValues = isSelected
+                          ? value.filter((val) => val !== option.value)
+                          : [...value, option.value];
+                        formik.setFieldValue(name, selectedValues);
+                      }
                     }}
                   />
                   {option.label}
