@@ -60,7 +60,7 @@ function CustomAutoComplete({
           }
         }}
         onBlur={handleBlur}
-        options={options}
+        options={value.includes("Select All") ? [{label: "Unselect All", value: "Unselect All"}, ...options] : [{label: "Select All", value: "Select All"}, ...options]}
         getOptionLabel={
           multipleSelection
             ? (option) => {
