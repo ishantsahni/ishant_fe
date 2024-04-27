@@ -78,12 +78,6 @@ function CustomAutoComplete({
           multipleSelection
             ? (props, option, { selected }) => (
                 <li {...props}>
-                  {/* <Checkbox
-                    icon={<span className="MuiCheckbox-icon" />}
-                    checkedIcon={<span className="MuiCheckbox-icon" />}
-                    style={{ marginRight: 8 }} // Adjust spacing as needed
-                    checked={selected}
-                  /> */}
                   <Checkbox
                     checked={value.includes(option.value)}
                     onChange={() => {
