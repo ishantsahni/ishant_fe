@@ -7,6 +7,9 @@ function CustomRadioButton({ name, value, onChange, formik }) {
   const handleChange = (event, index) => {
     console.log("event change ", event);
     const rankings = [...value]
+    if(rankings.indexOf(event.target.value) > -1) {
+      rankings[rankings.indexOf(event.target.value)] = "";
+    }
     rankings[index] = event.target.value;
     formik.setFieldValue(name, rankings);
   }
