@@ -1,4 +1,15 @@
-import { FormControlLabel, Paper, Radio, RadioGroup, Table, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import {
+  FormControlLabel,
+  Paper,
+  Radio,
+  RadioGroup,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import PropTypes from "prop-types";
 
 function CustomRadioButton({ name, value, onChange, formik, group }) {
@@ -16,37 +27,43 @@ function CustomRadioButton({ name, value, onChange, formik, group }) {
     <div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Options</TableCell>
-            <TableCell>Select Rank</TableCell>
-          </TableRow>
-        </TableHead>
-          {Array.from({ length: value.length }, (_, index) => {
-            return (
-              <div key={index} className="flex">
-                <p>Option {index + 1}</p>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-form-control-label-placement"
-                  name={name}
-                  value={value[index]}
-                  onChange={(event) => handleChange(event, index)}
-                  defaultValue="top"
-                >
-                  {Array.from({ length: value.length }, (_, radioIndex) => (
-                    <FormControlLabel
-                      key={radioIndex}
-                      labelPlacement="top"
-                      value={`${radioIndex + 1}`}
-                      control={<Radio />}
-                      label={`${radioIndex + 1}`}
-                    />
-                  ))}
-                </RadioGroup>
-              </div>
-            );
-          })}
+          <TableHead>
+            <TableRow>
+              <TableCell>Options</TableCell>
+              <TableCell>Select Rank</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {Array.from({ length: value.length }, (_, index) => {
+              return (
+                <TableRow key={index}>
+                  <TableCell>
+                    <p>Option {index + 1}</p>
+                  </TableCell>
+                  <TableCell>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-form-control-label-placement"
+                      name={name}
+                      value={value[index]}
+                      onChange={(event) => handleChange(event, index)}
+                      defaultValue="top"
+                    >
+                      {Array.from({ length: value.length }, (_, radioIndex) => (
+                        <FormControlLabel
+                          key={radioIndex}
+                          labelPlacement="top"
+                          value={`${radioIndex + 1}`}
+                          control={<Radio />}
+                          label={`${radioIndex + 1}`}
+                        />
+                      ))}
+                    </RadioGroup>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
         </Table>
       </TableContainer>
     </div>
