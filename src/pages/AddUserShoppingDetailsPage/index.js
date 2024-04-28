@@ -56,6 +56,7 @@ function AddUserShoppingDetailsPage() {
             country: [],
             movie: "",
             manyMovies: [],
+            rank: ""
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
@@ -74,6 +75,7 @@ function AddUserShoppingDetailsPage() {
             manyMovies: Yup.array()
                 .min(1, "Atleast one movie should be selected")
                 .required("Required"),
+            rank: Yup.string().required("Required")
         }),
 
         onSubmit: (values) => {
@@ -86,7 +88,11 @@ function AddUserShoppingDetailsPage() {
     return (
         <div className="mt-[50px] mx-[50px]">
             <form>
-                <CustomRadioButton />
+                <CustomRadioButton
+                    name="rank"
+                    value={formik.values.rank}
+                    onChange={formik.handleChange}
+                />
                 <CustomTextField
                     id="firstName"
                     name="firstName"
