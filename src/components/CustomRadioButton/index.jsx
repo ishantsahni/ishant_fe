@@ -36,8 +36,8 @@ function CustomRadioButton({ name, value, onChange, formik, group }) {
             // }}
           >
             <TableRow className="!bg-[#ecf2fb]">
-              <TableCell>Options</TableCell>
-              <TableCell>Select Rank</TableCell>
+              <TableCell><p className="!text-[#7b8795] !text-[13px] !font-medium">Options</p></TableCell>
+              <TableCell><p className="!text-[#7b8795] !text-[13px] !font-medium">Select Rank</p></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
