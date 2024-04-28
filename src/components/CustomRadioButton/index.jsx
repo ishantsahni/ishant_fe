@@ -30,8 +30,12 @@ function CustomRadioButton({ name, value, onChange, formik, group }) {
        className="!w-[550px]"
        >
         <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
+          <TableHead
+            // classes={{
+              // className= "!bg-red"
+            // }}
+          >
+            <TableRow className="!bg-[#ecf2fb]">
               <TableCell>Options</TableCell>
               <TableCell>Select Rank</TableCell>
             </TableRow>
