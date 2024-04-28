@@ -1,8 +1,16 @@
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import { Formik } from "formik";
 import { useState } from "react";
 
-function CustomRadioButton({ name, value, onChange }) {
-  const radioCount = value.length;
+function CustomRadioButton({ name, value, onChange, formik }) {
+  
+  const handleChange = (event, index) => {
+    console.log("event change ", event);
+    const rankings = [...value]
+    rankings[index] = event.target.value;
+    formik.setFieldValue(name, rankings);
+  }
+
   return (
     <div>
       {Array.from({ length: value.length }, (_, index) => {
@@ -13,7 +21,7 @@ function CustomRadioButton({ name, value, onChange }) {
             aria-labelledby="demo-form-control-label-placement"
             name={name}
             value={value[index]}
-            onChange={onChange}
+            onChange={(event) => handleChange(event, index)}
             defaultValue="top"
           >
             {Array.from({ length: value.length }, (_, radioIndex) => (

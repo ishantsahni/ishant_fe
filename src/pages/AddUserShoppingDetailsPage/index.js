@@ -90,6 +90,7 @@ function AddUserShoppingDetailsPage() {
             <form>
                 <CustomRadioButton
                     name="rank"
+                    formik={formik}
                     value={formik.values.rank}
                     onChange={formik.handleChange}
                 />
