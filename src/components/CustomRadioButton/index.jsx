@@ -27,7 +27,7 @@ function CustomRadioButton({ name, value, onChange, formik, group }) {
     <div>
       <TableContainer 
        component={Paper}
-       className="!w-80"
+       className="!w-[550px]"
        >
         <Table aria-label="simple table">
           <TableHead>
