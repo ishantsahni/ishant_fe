@@ -2,7 +2,7 @@ import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { useState } from "react";
 
 function CustomRadioButton({name, value, onChange}) {
-  const radioCount = 5;
+  const radioCount = value.length;
   return (
     <div>
       <RadioGroup

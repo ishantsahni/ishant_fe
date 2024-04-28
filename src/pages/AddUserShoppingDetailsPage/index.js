@@ -56,7 +56,7 @@ function AddUserShoppingDetailsPage() {
             country: [],
             movie: "",
             manyMovies: [],
-            rank: ""
+            rank: Array(5).fill("")
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
@@ -75,7 +75,7 @@ function AddUserShoppingDetailsPage() {
             manyMovies: Yup.array()
                 .min(1, "Atleast one movie should be selected")
                 .required("Required"),
-            rank: Yup.string().required("Required")
+            rank: Yup.array().required("Required")
         }),
 
         onSubmit: (values) => {
