@@ -3,7 +3,6 @@ import { useState } from "react";
 
 function CustomRadioButton({name, value, onChange}) {
   const radioCount = 5;
-  const [selectedRadio, setSelectedRadio] = useState(0);
   return (
     <div>
       <RadioGroup
