@@ -1,13 +1,12 @@
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
-import { Formik } from "formik";
-import { useState } from "react";
+import PropTypes from "prop-types";
 
-function CustomRadioButton({ name, value, onChange, formik }) {
+function CustomRadioButton({ name, value, onChange, formik, group }) {
   
   const handleChange = (event, index) => {
     console.log("event change ", event);
     const rankings = [...value]
-    if(rankings.indexOf(event.target.value) > -1) {
+    if(group && rankings.indexOf(event.target.value) > -1) {
       rankings[rankings.indexOf(event.target.value)] = "";
     }
     rankings[index] = event.target.value;
@@ -41,6 +40,14 @@ function CustomRadioButton({ name, value, onChange, formik }) {
       })}
     </div>
   );
+}
+
+CustomRadioButton.propTypes = {
+  group: PropTypes.bool
+}
+
+CustomRadioButton.defaultProps = {
+  group: false
 }
 
 export default CustomRadioButton;
