@@ -43,7 +43,7 @@ function CustomRadioButton({ name, value, onChange, formik, group }) {
           <TableBody>
             {Array.from({ length: value.length }, (_, index) => {
               return (
-                <TableRow key={index}>
+                <TableRow key={index} className="!border-t-[2px] !border-red-500">
                   <TableCell>
                     <p>Option {index + 1}</p>
                   </TableCell>
