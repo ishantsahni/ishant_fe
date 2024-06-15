@@ -8,6 +8,18 @@ import API_URLS from "../../config/API_URLS";
 
 function AddUserShoppingDetailsPage() {
 
+    const postUserData = async (values) => {
+        try {
+            const response = await axios.post(`${API_URLS.baseUrl}${API_URLS.postUserData}`, {
+                ...values
+            })
+            console.log("response ", response);
+
+        } catch (error) {
+            console.error("Error: ", error);
+        }
+    }
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -17,10 +29,10 @@ function AddUserShoppingDetailsPage() {
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
-                .max(15, 'Must be 15 characters or less')
+                // .max(15, 'Must be 15 characters or less')
                 .required('Required'),
             lastName: Yup.string()
-                .max(20, 'Must be 20 characters or less')
+                // .max(20, 'Must be 20 characters or less')
                 .required('Required'),
             age: Yup.number("Must be a number").required("Required"),
             email: Yup.string().email('Invalid email address').required('Required'),
@@ -28,6 +40,7 @@ function AddUserShoppingDetailsPage() {
 
         onSubmit: values => {
             console.log("formik submitted ", values);
+            postUserData(values);
         },
     });
 
