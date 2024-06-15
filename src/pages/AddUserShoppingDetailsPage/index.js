@@ -2,6 +2,9 @@ import { useFormik } from "formik";
 import CustomTextField from "../../components/CustomTextField";
 import { Button } from "@mui/material";
 import * as Yup from 'yup';
+import axios from "axios";
+import { useEffect } from "react";
+import API_URLS from "../../config/API_URLS";
 
 function AddUserShoppingDetailsPage() {
 
@@ -29,6 +32,14 @@ function AddUserShoppingDetailsPage() {
     });
 
     console.log("formik values outside ", formik);
+
+    useEffect(() => {
+        axios.get(`${API_URLS.baseUrl}${API_URLS.firstApi}`).then(response => {
+            console.log("first api response ", response);
+        }).catch(error => {
+            console.error('Error fetching data: ', error);
+        })
+    }, []);
 
     return (
         <div className="mt-[50px] mx-[50px]">
