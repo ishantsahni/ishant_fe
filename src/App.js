@@ -6,8 +6,8 @@ import { useFormik } from "formik";
 import * as yup from 'yup';
 import HomePage from "./pages/HomePage";
 import AddProductPage from "./pages/AddProductPage";
-import AddUserShoppingDetailsPage from "./pages/AddUserShoppingDetailsPage";
 import RoughPage from "./pages/RoughPage";
+import UsersPage from "./pages/UsersPage";
 
 function App() {
 
@@ -37,7 +37,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route path="/addProduct" element={<AddProductPage />} />
-        <Route path="/addUserShoppingDetails" element={<AddUserShoppingDetailsPage />} />
+        <Route path="/addUserShoppingDetails" element={<UsersPage />} />
         <Route path="/rough" element={<RoughPage />} />
       </Routes>
     </Router >

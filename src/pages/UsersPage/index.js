@@ -6,7 +6,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import API_URLS from "../../config/API_URLS";
 
-function AddUserShoppingDetailsPage() {
+function UsersPage() {
 
     // const fetchUserData = () => {
 
@@ -115,4 +115,4 @@ function AddUserShoppingDetailsPage() {
     )
 }
 
-export default AddUserShoppingDetailsPage;
+export default UsersPage;
