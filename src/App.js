@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import AddProductPage from "./pages/AddProductPage";
 import RoughPage from "./pages/RoughPage";
 import UsersPage from "./pages/UsersPage";
+import UserShoppingDetails from "./pages/UserShoppingDetails";
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route path="/addProduct" element={<AddProductPage />} />
         <Route path="/usersPage" element={<UsersPage />} />
+        <Route path="/userShoppingDetails" element={<UserShoppingDetails />} />
         <Route path="/rough" element={<RoughPage />} />
       </Routes>
     </Router >

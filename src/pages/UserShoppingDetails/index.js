@@ -6,7 +6,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import API_URLS from "../../config/API_URLS";
 
-function UserDetailsPage() {
+function UserShoppingDetails() {
 
     const postUserData = async (values) => {
         try {
@@ -109,4 +109,4 @@ function UserDetailsPage() {
     )
 }
 
-export default UserDetailsPage;
+export default UserShoppingDetails;
