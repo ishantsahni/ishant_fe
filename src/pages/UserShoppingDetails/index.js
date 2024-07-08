@@ -36,8 +36,8 @@ function UserShoppingDetails() {
         }),
 
         onSubmit: values => {
-            console.log("formik submitted ", values);
-            postUserData(values);
+            console.log("formik user shopping details ", values);
+            // postUserData(values);
         },
     });
 
