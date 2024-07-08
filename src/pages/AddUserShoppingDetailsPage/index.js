@@ -8,6 +8,10 @@ import API_URLS from "../../config/API_URLS";
 
 function AddUserShoppingDetailsPage() {
 
+    // const fetchUserData = () => {
+
+    // }
+
     const postUserData = async (values) => {
         try {
             const response = await axios.post(`${API_URLS.baseUrl}${API_URLS.postUserData}`, {
@@ -100,6 +104,13 @@ function AddUserShoppingDetailsPage() {
                 />
                 <Button onClick={() => formik.handleSubmit()} variant="contained">Submit</Button>
             </form>
+            <Button onClick={() => {
+                axios.get(`${API_URLS.baseUrl}${API_URLS.getUserData}`).then(response => {
+                    console.log("get user data response ", response);
+                }).catch(error => {
+                    console.error('Error fetching data: ', error);
+                })
+            }} >Submit 2 </Button>
         </div>
     )
 }
