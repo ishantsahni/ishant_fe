@@ -3,7 +3,8 @@ const API_URLS = {
   baseUrl: "http://localhost:4000",
   firstApi: "/firstApi",
   postUserData: "/user/postUserData",
-  getUserData: "/user/getUserData"
+  getUserData: "/user/getUserData",
+  postUserShoppingDetails: "/postUserShoppingDetails"
 };
 
 export default API_URLS;

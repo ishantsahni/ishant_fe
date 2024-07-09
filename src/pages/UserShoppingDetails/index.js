@@ -8,9 +8,9 @@ import API_URLS from "../../config/API_URLS";
 
 function UserShoppingDetails() {
 
-    const postUserData = async (values) => {
+    const postUserShoppingDetails = async (values) => {
         try {
-            const response = await axios.post(`${API_URLS.baseUrl}${API_URLS.postUserData}`, {
+            const response = await axios.post(`${API_URLS.baseUrl}${API_URLS.postUserShoppingDetails}`, {
                 ...values
             })
             console.log("response ", response);
@@ -38,6 +38,7 @@ function UserShoppingDetails() {
         onSubmit: values => {
             console.log("formik user shopping details ", values);
             // postUserData(values);
+            postUserShoppingDetails(values);
         },
     });
 
