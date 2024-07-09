@@ -105,7 +105,12 @@ function UsersPage() {
                 <Button onClick={() => formik.handleSubmit()} variant="contained">Submit</Button>
             </form>
             <Button onClick={() => {
-                axios.get(`${API_URLS.baseUrl}${API_URLS.getUserData}`).then(response => {
+                axios.get(`${API_URLS.baseUrl}${API_URLS.getUserData}`, {
+                    params: {
+                        // email: formik.values.email
+                        email: "ishant@gmail.com"
+                    }
+                }).then(response => {
                     console.log("get user data response ", response);
                 }).catch(error => {
                     console.error('Error fetching data: ', error);
