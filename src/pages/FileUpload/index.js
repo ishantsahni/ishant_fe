@@ -8,6 +8,8 @@ function FileUpload() {
         setFile(e.target.files[0]);
     };
 
+    console.log("file value ", file);
+
     const handleFileUpload = async () => {
         const formData = new FormData();
         formData.append('file', file);
