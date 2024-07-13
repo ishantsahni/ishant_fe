@@ -46,7 +46,9 @@ function ProductDetailsPage() {
                     errors={formik.errors.userName}
                 />
                 <Button onClick={() => {
-                    axios.get(`${API_URLS.baseUrl}${API_URLS.getProductDetails}`).then(response => {
+                    axios.get(`${API_URLS.baseUrl}${API_URLS.getProductDetails}`, {
+                        params: { name: formik.values.userName }
+                    }).then(response => {
                         console.log("get user data response ", response);
                     }).catch(error => {
                         console.error('Error fetching data: ', error);
