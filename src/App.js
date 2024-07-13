@@ -10,6 +10,7 @@ import RoughPage from "./pages/RoughPage";
 import UsersPage from "./pages/UsersPage";
 import UserShoppingDetails from "./pages/UserShoppingDetails";
 import FileUploadPage from "./pages/FileUploadPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/usersPage" element={<UsersPage />} />
         <Route path="/userShoppingDetails" element={<UserShoppingDetails />} />
         <Route path="/rough" element={<RoughPage />} />
+        <Route path="/productDetails" element={<ProductDetailsPage />} />
         <Route path="fileUploadPage" element={<FileUploadPage />} />
       </Routes>
     </Router >
