@@ -11,6 +11,7 @@ import UsersPage from "./pages/UsersPage";
 import UserShoppingDetails from "./pages/UserShoppingDetails";
 import FileUploadPage from "./pages/FileUploadPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import ProductListingPage from "./pages/ProductListingPage";
 
 function App() {
 
@@ -39,12 +40,13 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/productListingPage" element={<ProductListingPage />} />
         <Route path="/addProduct" element={<AddProductPage />} />
         <Route path="/usersPage" element={<UsersPage />} />
         <Route path="/userShoppingDetails" element={<UserShoppingDetails />} />
         <Route path="/rough" element={<RoughPage />} />
         <Route path="/productDetails" element={<ProductDetailsPage />} />
-        <Route path="fileUploadPage" element={<FileUploadPage />} />
+        <Route path="/fileUploadPage" element={<FileUploadPage />} />
       </Routes>
     </Router >
   );
