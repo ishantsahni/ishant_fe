@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 
-function FileUpload() {
+function FileUpload({ onFileUpload }) {
     const [file, setFile] = useState(null);
 
     const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
+        const selectedFile = e.target.files[0];
+        setFile(selectedFile);
+        onFileUpload(selectedFile);
     };
 
     console.log("file value ", file);

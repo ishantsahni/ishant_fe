@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import CustomTextField from '../../components/CustomTextField';
 import { Button } from '@mui/material';
+import FileUpload from '../FileUpload';
 
 function AddProductPage() {
 
@@ -13,7 +14,7 @@ function AddProductPage() {
             category: '',
             brand: '',
             stock: 0,
-            images: ''
+            images: null
         },
         validationSchema: yup.object({
             name: yup.string().required('Required'),
@@ -22,13 +23,18 @@ function AddProductPage() {
             category: yup.string().required('Required'),
             brand: yup.string().required(),
             stock: yup.number("Must be a number").required("Required"),
-            images: yup.string().required()
+            images: yup.mixed().required("Image is required")
         }),
 
         onSubmit: values => {
             console.log("formik submitted ", values);
         },
     });
+
+    const handleFileUpload = (file) => {
+        formik.setFieldValue('images', file)
+    }
+
     return (
         <div className="mt-[50px] mx-[50px]">
             <form>
@@ -94,16 +100,12 @@ function AddProductPage() {
                     touched={formik.touched.stock}
                     errors={formik.errors.stock}
                 />
-                <CustomTextField
-                    id="images"
-                    name="images"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.images}
-                    label="Images"
-                    touched={formik.touched.images}
-                    errors={formik.errors.images}
+                <FileUpload
+                    onFileUpload={handleFileUpload}  // Pass handleFileUpload to FileUpload
                 />
+                {formik.touched.images && formik.errors.images ? (
+                    <div className="text-red-500">{formik.errors.images}</div>
+                ) : null}
                 <Button onClick={() => formik.handleSubmit()} variant="contained">Submit</Button>
             </form>
             <Button
