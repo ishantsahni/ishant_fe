@@ -35,6 +35,8 @@ function AddProductPage() {
         formik.setFieldValue('images', file)
     }
 
+    console.log("add product formik ", formik.values);
+
     return (
         <div className="mt-[50px] mx-[50px]">
             <form>

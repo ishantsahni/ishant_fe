@@ -4,17 +4,13 @@ import { useState } from "react";
 function FileUpload({ onFileUpload }) {
     const [file, setFile] = useState(null);
 
-    const handleFileChange = (e) => {
+    const handleFileChange = async (e) => {
         const selectedFile = e.target.files[0];
         setFile(selectedFile);
-        onFileUpload(selectedFile);
-    };
 
-    console.log("file value ", file);
-
-    const handleFileUpload = async () => {
+        // Start file upload
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append('file', selectedFile);
 
         try {
             const res = await axios.post("http://localhost:4000/upload", formData, {
@@ -22,18 +18,20 @@ function FileUpload({ onFileUpload }) {
                     'Content-Type': 'multipart/form-data'
                 }
             })
-            console.log("file upload response", res?.data);
+            const fileUrl = res?.data?.fileUrl;
+
+            // Pass the URL to Formik
+            onFileUpload(fileUrl);
         } catch (error) {
             console.error("file upload error", error);
         }
 
-    }
-
+    };
 
     return (
         <div>
             <input type="file" onChange={handleFileChange} />
-            <button onClick={handleFileUpload}>Upload</button>
+            {/* <button onClick={handleFileUpload}>Upload</button> */}
         </div>
     )
 };
