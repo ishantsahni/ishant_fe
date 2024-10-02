@@ -8,7 +8,7 @@ function AddProductPage() {
 
     const formik = useFormik({
         initialValues: {
-            name: '',
+            productName: '',
             description: '',
             price: 0,
             category: '',
@@ -17,7 +17,7 @@ function AddProductPage() {
             images: null
         },
         validationSchema: yup.object({
-            name: yup.string().required('Required'),
+            productName: yup.string().required('Required'),
             description: yup.string().required('Required'),
             price: yup.number("Must be a number").required("Required"),
             category: yup.string().required('Required'),
@@ -41,14 +41,14 @@ function AddProductPage() {
         <div className="mt-[50px] mx-[50px]">
             <form>
                 <CustomTextField
-                    id="name"
-                    name="name"
+                    id="productName"
+                    name="productName"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.name}
-                    label="Name"
-                    touched={formik.touched.name}
-                    errors={formik.errors.name}
+                    value={formik.values.productName}
+                    label="Product Name"
+                    touched={formik.touched.productName}
+                    errors={formik.errors.productName}
                 />
                 <CustomTextField
                     id="description"
