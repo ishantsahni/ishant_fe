@@ -50,7 +50,7 @@ function App() {
         <Route path="/productDetails" element={<ProductDetailsPage />} />
         <Route path="/fileUploadPage" element={<FileUploadPage />} />
         <Route path="/showProducts" element={<ShowProductsPage />} />
-        <Route path="/showSingleProductPage" element={<ShowSingleProductPage />} />
+        <Route path="/showSingleProduct" element={<ShowSingleProductPage />} />
       </Routes>
     </Router >
   );
