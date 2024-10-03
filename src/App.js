@@ -12,6 +12,8 @@ import UserShoppingDetails from "./pages/UserShoppingDetails";
 import FileUploadPage from "./pages/FileUploadPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import ProductListingPage from "./pages/ProductListingPage";
+import ShowProductsPage from "./pages/ShowProductsPage";
+import ShowSingleProductPage from "./pages/ShowSingleProductPage";
 
 function App() {
 
@@ -47,6 +49,8 @@ function App() {
         <Route path="/rough" element={<RoughPage />} />
         <Route path="/productDetails" element={<ProductDetailsPage />} />
         <Route path="/fileUploadPage" element={<FileUploadPage />} />
+        <Route path="/showProducts" element={<ShowProductsPage />} />
+        <Route path="/showSingleProductPage" element={<ShowSingleProductPage />} />
       </Routes>
     </Router >
   );
