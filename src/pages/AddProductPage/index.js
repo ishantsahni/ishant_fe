@@ -3,6 +3,7 @@ import * as yup from 'yup';
 import CustomTextField from '../../components/CustomTextField';
 import { Button } from '@mui/material';
 import FileUpload from '../FileUpload';
+import axios from 'axios';
 
 function AddProductPage() {
 
@@ -28,6 +29,9 @@ function AddProductPage() {
 
         onSubmit: values => {
             console.log("formik submitted ", values);
+            axios.post("http://localhost:4000/addProduct", values)
+                .then(response => console.log("Product added successfully: ", response.data))
+                .catch(error => console.log("Error adding products: ", error));
         },
     });
 
