@@ -4,6 +4,7 @@ import CustomTextField from '../../components/CustomTextField';
 import { Button } from '@mui/material';
 import FileUpload from '../FileUpload';
 import axios from 'axios';
+import API_URLS from '../../config/API_URLS';
 
 function AddProductPage() {
 
@@ -29,7 +30,7 @@ function AddProductPage() {
 
         onSubmit: values => {
             console.log("formik submitted ", values);
-            axios.post("http://localhost:4000/addProduct", values)
+            axios.post(`${API_URLS.baseUrl}${API_URLS.getUserData}`, values)
                 .then(response => console.log("Product added successfully: ", response.data))
                 .catch(error => console.log("Error adding products: ", error));
         },
@@ -114,20 +115,20 @@ function AddProductPage() {
                 ) : null}
                 <Button onClick={() => formik.handleSubmit()} variant="contained">Submit</Button>
             </form>
-            <Button
-            // onClick={() => {
-            //     axios.get(`${API_URLS.baseUrl}${API_URLS.getUserData}`, {
-            //         params: {
-            //             // email: formik.values.email
-            //             email: "ishant@gmail.com"
-            //         }
-            //     }).then(response => {
-            //         console.log("get user data response ", response);
-            //     }).catch(error => {
-            //         console.error('Error fetching data: ', error);
-            //     })
-            // }} 
-            >Submit 2 </Button>
+            {/* <Button
+                onClick={() => {
+                    axios.get(`${API_URLS.baseUrl}${API_URLS.getUserData}`, {
+                        params: {
+                            // email: formik.values.email
+                            email: "ishant@gmail.com"
+                        }
+                    }).then(response => {
+                        console.log("get user data response ", response);
+                    }).catch(error => {
+                        console.error('Error fetching data: ', error);
+                    })
+                }}
+            >Submit 2 </Button> */}
         </div>
     )
 }
