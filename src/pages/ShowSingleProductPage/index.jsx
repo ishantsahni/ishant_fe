@@ -1,6 +1,8 @@
+import SingleProductComponent from "../../components/SingleProductComponent";
+
 function ShowSingleProductPage() {
     return (
-        <div>Show Single Product Page</div>
+        <div><SingleProductComponent /></div>
     )
 }
 
