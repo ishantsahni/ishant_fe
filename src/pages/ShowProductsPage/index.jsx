@@ -11,6 +11,8 @@ function ShowProductsPage() {
         .catch(error => console.log("Error while fetch all products ", error))
     }, []);
 
+    console.log("all products ", allProducts);
+
     return (
         <div>Show Products Page</div>
     )

@@ -1,6 +1,7 @@
 function SingleProductComponent() {
     return (
         <div className="h-[10rem] w-[20rem]">
+            <img src="eCommProductImage" alt="https://ishantecommerce.s3.eu-north-1.amazonaws.com/file-1727936688715.jfif" />
             <p>Product Name</p>
             <p>Description</p>
             <p>Price</p>
