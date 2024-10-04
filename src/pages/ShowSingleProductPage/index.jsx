@@ -2,7 +2,7 @@ import SingleProductComponent from "../../components/SingleProductComponent";
 
 function ShowSingleProductPage() {
     return (
-        <div><SingleProductComponent /></div>
+        <div className="p-10"><SingleProductComponent /></div>
     )
 }
 
