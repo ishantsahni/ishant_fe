@@ -8,7 +8,8 @@ const API_URLS = {
   getUserShoppingDetails: "/getUserShoppingDetails",
   getProductDetails: "/getProductDetails",
   addProduct: "/addProduct",
-  getProducts: "/getProducts"
+  getProducts: "/getProducts",
+  getProduct: "/getProduct"
 };
 
 export default API_URLS;
