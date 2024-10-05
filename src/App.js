@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage";
 import AddProductPage from "./pages/AddProductPage";
 import RoughPage from "./pages/RoughPage";
 import FileUploadPage from "./pages/FileUploadPage";
-import ShowProductsPage from "./pages/ShowProductsPage";
+import ProductsPage from "./pages/ProductsPage";
 import ShowSingleProductPage from "./pages/ShowSingleProductPage";
 
 function App() {
@@ -14,8 +14,8 @@ function App() {
         <Route path="/addProduct" element={<AddProductPage />} />
         <Route path="/rough" element={<RoughPage />} />
         <Route path="/fileUploadPage" element={<FileUploadPage />} />
-        <Route path="/showProducts" element={<ShowProductsPage />} />
-        <Route path="/showSingleProduct/:id" element={<ShowSingleProductPage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/product/:id" element={<ShowSingleProductPage />} />
       </Routes>
     </Router >
   );

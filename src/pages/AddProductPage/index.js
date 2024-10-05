@@ -30,7 +30,7 @@ function AddProductPage() {
 
         onSubmit: values => {
             console.log("formik submitted ", values);
-            axios.post(`${API_URLS.baseUrl}${API_URLS.getUserData}`, values)
+            axios.post(`${API_URLS.baseUrl}${API_URLS.addProduct}`, values)
                 .then(response => console.log("Product added successfully: ", response.data))
                 .catch(error => console.log("Error adding products: ", error));
         },

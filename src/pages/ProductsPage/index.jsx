@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import API_URLS from "../../config/API_URLS";
 import SingleProductComponent from "../../components/SingleProductComponent";
 
-function ShowProductsPage() {
+function ProductsPage() {
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
@@ -24,4 +24,4 @@ function ShowProductsPage() {
   );
 }
 
-export default ShowProductsPage;
+export default ProductsPage;
