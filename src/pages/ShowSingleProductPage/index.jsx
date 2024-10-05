@@ -1,17 +1,18 @@
 import { useParams } from "react-router-dom";
 import SingleProductComponent from "../../components/SingleProductComponent";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import API_URLS from "../../config/API_URLS";
 import axios from "axios";
 
 function ShowSingleProductPage() {
   const { id } = useParams();
+  const [productInfo, setProductInfo] = useState({});
 
   useEffect(() => {
     if (id) {
       axios
         .get(`${API_URLS.baseUrl}${API_URLS.getProduct}/${id}`)
-        .then((response) => console.log("Single product fetched ", response))
+        .then((response) => setProductInfo(response?.data))
         .catch((error) =>
           console.log("Error in fetching single product ", error)
         );
@@ -20,7 +21,7 @@ function ShowSingleProductPage() {
 
   return (
     <div className="p-10">
-      <p>Redirected to single product page</p>
+      <SingleProductComponent productInfo={productInfo} />
     </div>
   );
 }
