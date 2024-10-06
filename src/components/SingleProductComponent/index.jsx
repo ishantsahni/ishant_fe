@@ -12,9 +12,9 @@ function SingleProductComponent({ productInfo }) {
       <img
         className="w-[5rem] h-[5rem]"
         alt="eCommProductImage"
-        src={productInfo.images}
+        src={productInfo.image}
       />
-      <p>{productInfo?.productName}</p>
+      <p>{productInfo?.name}</p>
       <p>{productInfo?.brand}</p>
       <p>{productInfo?.price}</p>
       <p>{productInfo?.category}</p>
