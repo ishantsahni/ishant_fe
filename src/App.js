@@ -11,7 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route path="/addProduct" element={<AddProductPage />} />
+        <Route path="/product/add" element={<AddProductPage />} />
         <Route path="/rough" element={<RoughPage />} />
         <Route path="/fileUploadPage" element={<FileUploadPage />} />
         <Route path="/products" element={<ProductsPage />} />
