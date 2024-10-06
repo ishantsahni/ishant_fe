@@ -17,7 +17,7 @@ function AddProductPage() {
             category: '',
             brand: '',
             stock: 0,
-            images: null
+            image: null
         },
         validationSchema: yup.object({
             name: yup.string().required('Required'),
@@ -26,7 +26,7 @@ function AddProductPage() {
             category: yup.string().required('Please select a value'),
             brand: yup.string().required(),
             stock: yup.number("Must be a number").required("Required"),
-            images: yup.mixed().required("Image is required")
+            image: yup.mixed().required("Image is required")
         }),
 
         onSubmit: values => {
@@ -38,7 +38,7 @@ function AddProductPage() {
     });
 
     const handleFileUpload = (file) => {
-        formik.setFieldValue('images', file)
+        formik.setFieldValue('image', file)
     }
 
     console.log("add product formik ", formik.values);
@@ -111,8 +111,8 @@ function AddProductPage() {
                 <FileUpload
                     onFileUpload={handleFileUpload}  // Pass handleFileUpload to FileUpload
                 />
-                {formik.touched.images && formik.errors.images ? (
-                    <div className="text-red-500">{formik.errors.images}</div>
+                {formik.touched.image && formik.errors.image ? (
+                    <div className="text-red-500">{formik.errors.image}</div>
                 ) : null}
                 <Button onClick={() => formik.handleSubmit()} variant="contained">Submit</Button>
             </form>
