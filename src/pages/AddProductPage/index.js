@@ -37,6 +37,8 @@ function AddProductPage() {
         },
     });
 
+    console.log("added");
+
     const handleFileUpload = (file) => {
         formik.setFieldValue('image', file)
     }
