@@ -5,6 +5,7 @@ import { Button } from '@mui/material';
 import FileUpload from '../FileUpload';
 import axios from 'axios';
 import API_URLS from '../../config/API_URLS';
+import CustomDropdown from '../../components/CustomDropdown';
 
 function AddProductPage() {
 
@@ -22,7 +23,7 @@ function AddProductPage() {
             name: yup.string().required('Required'),
             description: yup.string().required('Required'),
             price: yup.number("Must be a number").required("Required"),
-            category: yup.string().required('Required'),
+            category: yup.string().required('Please select a value'),
             brand: yup.string().required(),
             stock: yup.number("Must be a number").required("Required"),
             images: yup.mixed().required("Image is required")
@@ -76,15 +77,15 @@ function AddProductPage() {
                     touched={formik.touched.price}
                     errors={formik.errors.price}
                 />
-                <CustomTextField
+                <CustomDropdown
                     id="category"
                     name="category"
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
+                    onBlur={formik.handleChange}
                     value={formik.values.category}
                     label="Category"
                     touched={formik.touched.category}
-                    errors={formik.errors.category}
+                    errors={formik.touched.errors}
                 />
                 <CustomTextField
                     id="brand"
