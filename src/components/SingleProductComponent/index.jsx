@@ -4,8 +4,8 @@ function SingleProductComponent({ productInfo }) {
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate(`/showSingleProduct/${productInfo?._id}`)}
-      onKeyDown={() => navigate(`/showSingleProduct/${productInfo?._id}`)}
+      onClick={() => navigate(`/product/${productInfo?._id}`)}
+      onKeyDown={() => navigate(`/product/${productInfo?._id}`)}
       role="presentation"
       className="h-fit w-[10rem] cursor-pointer bg-orange-200 flex flex-col items-center justify-center py-4 rounded-lg"
     >
