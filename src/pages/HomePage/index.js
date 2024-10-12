@@ -1,11 +1,11 @@
+import { Button } from '@mui/material';
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import * as yup from 'yup';
 import CustomTextField from '../../components/CustomTextField';
-import { Button } from '@mui/material';
-import axios from 'axios';
-import API_URLS from '../../config/API_URLS';
 
 function HomePage() {
+    const [isSignUp, setIsSignUp] = useState(true);
 
     const formik = useFormik({
         initialValues: {
@@ -49,7 +49,8 @@ function HomePage() {
                     errors={formik.errors.password}
                 />
 
-                <Button onClick={() => formik.handleSubmit()} variant="contained">Sign Up</Button>
+                <Button onClick={() => formik.handleSubmit()} variant="contained">{isSignUp ? "Sign Up" : "Sign In"}</Button>
+                <p>Already a user, <span onClick={() => setIsSignUp(prev => !false)} className="text-amber-700 cursor-pointer">Sign In</span></p>
             </form>
         </div>
     )
