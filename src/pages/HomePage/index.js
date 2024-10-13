@@ -8,33 +8,41 @@ import CustomTextField from '../../components/CustomTextField';
 function HomePage() {
     const [isSignUp, setIsSignUp] = useState(true);
 
-    const getInitailValues = () => ({
+    const getSignInInitailValues = () => ({
         email: '',
         password: '',
-        ...(isSignUp && {
-            name: '',
-            address: '',
-            city: '',
-            postalCode: '',
-            country: ''
-        })
     })
 
-    const getValidationSchema = () => yup.object({
+
+    const getSignUpInitailValues = () => ({
+        email: '',
+        password: '',
+        name: '',
+        address: '',
+        city: '',
+        postalCode: '',
+        country: ''
+    })
+
+    const getSignInValidationSchema = () => yup.object({
         email: yup.string().email("Invalid email format").required('Required'),
         password: yup.string().min(6, "Password must be atleast 6 characters").required('Required'),
-        ...(isSignUp && {
-            name: yup.string().required('Required'),
-            address: yup.string().required('Required'),
-            city: yup.string().required('Required'),
-            postalCode: yup.string().matches(/^\d{6}$/, "Postal code must be exactly 6 digits").required('Required'),
-            country: yup.string().required('Required')
-        })
+    });
+
+    const getsignUpValidationSchema = () => yup.object({
+        email: yup.string().email("Invalid email format").required('Required'),
+        password: yup.string().min(6, "Password must be atleast 6 characters").required('Required'),
+        name: yup.string().required('Required'),
+        address: yup.string().required('Required'),
+        city: yup.string().required('Required'),
+        postalCode: yup.string().matches(/^\d{6}$/, "Postal code must be exactly 6 digits").required('Required'),
+        country: yup.string().required('Required')
     });
 
     const formik = useFormik({
-        initialValues: getInitailValues(),
-        validationSchema: getValidationSchema(),
+        initialValues: isSignUp ? getSignUpInitailValues() : getSignInInitailValues(),
+        validationSchema: isSignUp ? getsignUpValidationSchema : getSignInValidationSchema(),
+        enableReinitialize: true,
         onSubmit: values => {
             console.log("formik submitted ", values);
             // axios.post(`${API_URLS.baseUrl}${API_URLS.addProduct}`, values)
@@ -42,32 +50,6 @@ function HomePage() {
             //     .catch(error => console.log("Error adding products: ", error));
         },
     })
-
-    // Initialize formik with initailValues and validationSchema
-    // const [formik, setFormik] = useState(useFormik({
-    //     initialValues: getInitailValues(),
-    //     validationSchema: getValidationSchema(),
-    //     onSubmit: values => {
-    //         console.log("formik submitted ", values);
-    //         // axios.post(`${API_URLS.baseUrl}${API_URLS.addProduct}`, values)
-    //         //     .then(response => console.log("Product added successfully: ", response.data))
-    //         //     .catch(error => console.log("Error adding products: ", error));
-    //     },
-    // }))
-
-    // Reset formik initialValues and validatinSchema when signUp changes
-    // useEffect(() => {
-    //     setFormik(useFormik({
-    //         initialValues: getInitailValues(),
-    //         validationSchema: getValidationSchema(),
-    //         onSubmit: values => {
-    //             console.log("formik submitted ", values);
-    //             // axios.post(`${API_URLS.baseUrl}${API_URLS.addProduct}`, values)
-    //             //     .then(response => console.log("Product added successfully: ", response.data))
-    //             //     .catch(error => console.log("Error adding products: ", error));
-    //         },
-    //     }))
-    // }, [isSignUp]);
 
     return (
         <div className="mt-[50px] mx-[50px]">
