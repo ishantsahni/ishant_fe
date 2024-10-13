@@ -9,22 +9,26 @@ function HomePage() {
 
     const formik = useFormik({
         initialValues: {
-            name: '',
             email: '',
             password: '',
-            address: '',
-            city: '',
-            postalCode: '',
-            country: ''
+            ...(isSignUp && {
+                name: '',
+                address: '',
+                city: '',
+                postalCode: '',
+                country: ''
+            })
         },
         validationSchema: yup.object({
-            name: yup.string().required('Required'),
             email: yup.string().email("Invalid email format").required('Required'),
             password: yup.string().min(6, "Password must be atleast 6 characters").required('Required'),
-            address: yup.string().required('Required'),
-            city: yup.string().required('Required'),
-            postalCode: yup.string().matches(/^\d{6}$/, "Postal code must be exactly 6 digits").required('Required'),
-            country: yup.string().required('Required')
+            ...(isSignUp && {
+                name: yup.string().required('Required'),
+                address: yup.string().required('Required'),
+                city: yup.string().required('Required'),
+                postalCode: yup.string().matches(/^\d{6}$/, "Postal code must be exactly 6 digits").required('Required'),
+                country: yup.string().required('Required')
+            })
         }),
 
         onSubmit: values => {
@@ -38,7 +42,7 @@ function HomePage() {
     return (
         <div className="mt-[50px] mx-[50px]">
             <form>
-                <CustomTextField
+                {isSignUp && <CustomTextField
                     id="name"
                     name="name"
                     onChange={formik.handleChange}
@@ -47,7 +51,7 @@ function HomePage() {
                     label="Name"
                     touched={formik.touched.name}
                     errors={formik.errors.name}
-                />
+                />}
                 <CustomTextField
                     id="email"
                     name="email"
@@ -68,49 +72,51 @@ function HomePage() {
                     touched={formik.touched.password}
                     errors={formik.errors.password}
                 />
-                <CustomTextField
-                    id="address"
-                    name="address"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.address}
-                    label="Address"
-                    touched={formik.touched.address}
-                    errors={formik.errors.address}
-                />
-                <CustomTextField
-                    id="city"
-                    name="city"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.city}
-                    label="City"
-                    touched={formik.touched.city}
-                    errors={formik.errors.city}
-                />
-                <CustomTextField
-                    id="postalCode"
-                    name="postalCode"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.postalCode}
-                    label="Postal Code"
-                    touched={formik.touched.postalCode}
-                    errors={formik.errors.postalCode}
-                />
-                <CustomTextField
-                    id="country"
-                    name="country"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.country}
-                    label="Country"
-                    touched={formik.touched.country}
-                    errors={formik.errors.country}
-                />
+                {isSignUp && <>
+                    <CustomTextField
+                        id="address"
+                        name="address"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.address}
+                        label="Address"
+                        touched={formik.touched.address}
+                        errors={formik.errors.address}
+                    />
+                    <CustomTextField
+                        id="city"
+                        name="city"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.city}
+                        label="City"
+                        touched={formik.touched.city}
+                        errors={formik.errors.city}
+                    />
+                    <CustomTextField
+                        id="postalCode"
+                        name="postalCode"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.postalCode}
+                        label="Postal Code"
+                        touched={formik.touched.postalCode}
+                        errors={formik.errors.postalCode}
+                    />
+                    <CustomTextField
+                        id="country"
+                        name="country"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.country}
+                        label="Country"
+                        touched={formik.touched.country}
+                        errors={formik.errors.country}
+                    />
+                </>}
 
                 <Button onClick={() => formik.handleSubmit()} variant="contained">{isSignUp ? "Sign Up" : "Sign In"}</Button>
-                <p>Already a user, <span onClick={() => setIsSignUp(prev => !false)} className="text-amber-700 cursor-pointer">Sign In</span></p>
+                <p>Already a user, <span onClick={() => setIsSignUp(false)} className="text-amber-700 cursor-pointer">Sign In</span></p>
             </form>
         </div>
     )
