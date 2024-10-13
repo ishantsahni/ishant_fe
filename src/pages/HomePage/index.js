@@ -4,6 +4,8 @@ import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import CustomTextField from '../../components/CustomTextField';
+import axios from 'axios';
+import API_URLS from '../../config/API_URLS';
 
 function HomePage() {
     const [isSignUp, setIsSignUp] = useState(true);
@@ -45,9 +47,9 @@ function HomePage() {
         enableReinitialize: true,
         onSubmit: values => {
             console.log("formik submitted ", values);
-            // axios.post(`${API_URLS.baseUrl}${API_URLS.addProduct}`, values)
-            //     .then(response => console.log("Product added successfully: ", response.data))
-            //     .catch(error => console.log("Error adding products: ", error));
+            axios.post(`${API_URLS.baseUrl}${isSignUp ? API_URLS.signUp : API_URLS.signIn}`, values)
+                .then(response => console.log("Request made ", response.data))
+                .catch(error => console.log("Error occurred ", error));
         },
     })
 
