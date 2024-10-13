@@ -7,18 +7,20 @@ import CustomTextField from '../../components/CustomTextField';
 function HomePage() {
     const [isSignUp, setIsSignUp] = useState(true);
 
+    const getInitailValues = () => ({
+        email: '',
+        password: '',
+        ...(isSignUp && {
+            name: '',
+            address: '',
+            city: '',
+            postalCode: '',
+            country: ''
+        })
+    })
+
     const formik = useFormik({
-        initialValues: {
-            email: '',
-            password: '',
-            ...(isSignUp && {
-                name: '',
-                address: '',
-                city: '',
-                postalCode: '',
-                country: ''
-            })
-        },
+        initialValues: getInitailValues(),
         validationSchema: yup.object({
             email: yup.string().email("Invalid email format").required('Required'),
             password: yup.string().min(6, "Password must be atleast 6 characters").required('Required'),
