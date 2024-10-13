@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Button } from '@mui/material';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import CustomTextField from '../../components/CustomTextField';
 
@@ -19,27 +20,54 @@ function HomePage() {
         })
     })
 
+    const getValidationSchema = () => yup.object({
+        email: yup.string().email("Invalid email format").required('Required'),
+        password: yup.string().min(6, "Password must be atleast 6 characters").required('Required'),
+        ...(isSignUp && {
+            name: yup.string().required('Required'),
+            address: yup.string().required('Required'),
+            city: yup.string().required('Required'),
+            postalCode: yup.string().matches(/^\d{6}$/, "Postal code must be exactly 6 digits").required('Required'),
+            country: yup.string().required('Required')
+        })
+    });
+
     const formik = useFormik({
         initialValues: getInitailValues(),
-        validationSchema: yup.object({
-            email: yup.string().email("Invalid email format").required('Required'),
-            password: yup.string().min(6, "Password must be atleast 6 characters").required('Required'),
-            ...(isSignUp && {
-                name: yup.string().required('Required'),
-                address: yup.string().required('Required'),
-                city: yup.string().required('Required'),
-                postalCode: yup.string().matches(/^\d{6}$/, "Postal code must be exactly 6 digits").required('Required'),
-                country: yup.string().required('Required')
-            })
-        }),
-
+        validationSchema: getValidationSchema(),
         onSubmit: values => {
             console.log("formik submitted ", values);
             // axios.post(`${API_URLS.baseUrl}${API_URLS.addProduct}`, values)
             //     .then(response => console.log("Product added successfully: ", response.data))
             //     .catch(error => console.log("Error adding products: ", error));
         },
-    });
+    })
+
+    // Initialize formik with initailValues and validationSchema
+    // const [formik, setFormik] = useState(useFormik({
+    //     initialValues: getInitailValues(),
+    //     validationSchema: getValidationSchema(),
+    //     onSubmit: values => {
+    //         console.log("formik submitted ", values);
+    //         // axios.post(`${API_URLS.baseUrl}${API_URLS.addProduct}`, values)
+    //         //     .then(response => console.log("Product added successfully: ", response.data))
+    //         //     .catch(error => console.log("Error adding products: ", error));
+    //     },
+    // }))
+
+    // Reset formik initialValues and validatinSchema when signUp changes
+    // useEffect(() => {
+    //     setFormik(useFormik({
+    //         initialValues: getInitailValues(),
+    //         validationSchema: getValidationSchema(),
+    //         onSubmit: values => {
+    //             console.log("formik submitted ", values);
+    //             // axios.post(`${API_URLS.baseUrl}${API_URLS.addProduct}`, values)
+    //             //     .then(response => console.log("Product added successfully: ", response.data))
+    //             //     .catch(error => console.log("Error adding products: ", error));
+    //         },
+    //     }))
+    // }, [isSignUp]);
 
     return (
         <div className="mt-[50px] mx-[50px]">
