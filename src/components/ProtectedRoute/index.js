@@ -1,6 +1,6 @@
 import React from 'react';
-import Navigate from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
+import { Navigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 
 const ProtectedRoute = ({ element: Component }) => {
@@ -12,7 +12,7 @@ const ProtectedRoute = ({ element: Component }) => {
     }
 
     try {
-        const decodedToken = jwt_decode(accessToken);
+        const decodedToken = jwtDecode(accessToken);
         const time = Date.now() / 1000;
         if (decodedToken.exp < time) {
             sessionStorage.removeItem('accessToken');
