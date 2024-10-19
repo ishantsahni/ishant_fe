@@ -48,7 +48,7 @@ function HomePage() {
         onSubmit: values => {
             console.log("formik submitted ", values);
             axios.post(`${API_URLS.baseUrl}${isSignUp ? API_URLS.signUp : API_URLS.signIn}`, values)
-                .then(response => console.log("Request made ", response.data))
+                .then(response => sessionStorage.setItem("accessToken", response?.data?.accessToken))
                 .catch(error => console.log("Error occurred ", error));
         },
     })
