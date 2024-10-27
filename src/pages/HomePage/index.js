@@ -1,14 +1,16 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Button } from '@mui/material';
+import axios from 'axios';
 import { useFormik } from 'formik';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import CustomTextField from '../../components/CustomTextField';
-import axios from 'axios';
 import API_URLS from '../../config/API_URLS';
 
 function HomePage() {
     const [isSignUp, setIsSignUp] = useState(true);
+    const navigate = useNavigate();
 
     const getSignInInitailValues = () => ({
         email: '',
@@ -48,7 +50,10 @@ function HomePage() {
         onSubmit: values => {
             console.log("formik submitted ", values);
             axios.post(`${API_URLS.baseUrl}${isSignUp ? API_URLS.signUp : API_URLS.signIn}`, values)
-                .then(response => sessionStorage.setItem("accessToken", response?.data?.accessToken))
+                .then(response => {
+                    sessionStorage.setItem("accessToken", response?.data?.accessToken);
+                    navigate('/products');
+                })
                 .catch(error => console.log("Error occurred ", error));
         },
     })
