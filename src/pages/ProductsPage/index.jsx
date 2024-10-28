@@ -2,13 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import API_URLS from "../../config/API_URLS";
 import SingleProductComponent from "../../components/SingleProductComponent";
+import axiosInstance from "../../services/axiosInstance";
 
 function ProductsPage() {
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${API_URLS.baseURL}${API_URLS.getProducts}`)
+    axiosInstance
+      .get(API_URLS.getProducts)
       .then((response) => setAllProducts(response?.data))
       .catch((error) => console.log("Error while fetch all products ", error));
   }, []);
