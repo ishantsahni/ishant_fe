@@ -3,7 +3,7 @@ import API_URLS from "../../config/API_URLS";
 
 // Create an Axios instance
 const axiosInstance = axios.create({
-  baseURL: API_URLS.baseUrl,
+  baseURL: API_URLS.baseURL,
 });
 
 // Add a request interceptor
