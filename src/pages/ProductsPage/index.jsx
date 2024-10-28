@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import API_URLS from "../../config/API_URLS";
 import SingleProductComponent from "../../components/SingleProductComponent";
