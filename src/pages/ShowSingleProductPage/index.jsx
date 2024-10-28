@@ -11,7 +11,7 @@ function ShowSingleProductPage() {
   useEffect(() => {
     if (id) {
       axios
-        .get(`${API_URLS.baseUrl}${API_URLS.getProduct}/${id}`)
+        .get(`${API_URLS.baseURL}${API_URLS.getProduct}/${id}`)
         .then((response) => setProductInfo(response?.data))
         .catch((error) =>
           console.log("Error in fetching single product ", error)

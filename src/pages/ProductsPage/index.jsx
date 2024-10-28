@@ -8,7 +8,7 @@ function ProductsPage() {
 
   useEffect(() => {
     axios
-      .get(`${API_URLS.baseUrl}${API_URLS.getProducts}`)
+      .get(`${API_URLS.baseURL}${API_URLS.getProducts}`)
       .then((response) => setAllProducts(response?.data))
       .catch((error) => console.log("Error while fetch all products ", error));
   }, []);
