@@ -43,16 +43,18 @@ function ProductsPage() {
   return (
     <div>
       <div className="flex">
-        <CustomDropdown
-          id="category"
-          name="category"
-          onChange={formik.handleChange}
-          onBlur={formik.handleChange}
-          value={formik.values.category}
-          label="Category"
-          touched={formik.touched.category}
-          errors={formik.touched.errors}
-        />
+        <div className="w-[40%]">
+          <CustomDropdown
+            id="category"
+            name="category"
+            onChange={formik.handleChange}
+            onBlur={formik.handleChange}
+            value={formik.values.category}
+            label="Category"
+            touched={formik.touched.category}
+            errors={formik.touched.errors}
+          />
+        </div>
         <CustomTextField
           id="price"
           name="price"
