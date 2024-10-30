@@ -7,7 +7,7 @@ function SingleProductComponent({ productInfo }) {
       onClick={() => navigate(`/product/${productInfo?._id}`)}
       onKeyDown={() => navigate(`/product/${productInfo?._id}`)}
       role="presentation"
-      className="h-fit w-[10rem] cursor-pointer bg-orange-200 flex flex-col items-center justify-center py-4 rounded-lg"
+      className="mx-auto h-fit w-[10rem] cursor-pointer bg-orange-200 flex flex-col items-center justify-center py-4 rounded-lg"
     >
       <img
         className="w-[5rem] h-[5rem]"
