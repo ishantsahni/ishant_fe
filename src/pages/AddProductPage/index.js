@@ -3,9 +3,9 @@ import * as yup from "yup";
 import CustomTextField from "../../components/CustomTextField";
 import { Button } from "@mui/material";
 import FileUpload from "../FileUpload";
-import axios from "axios";
 import API_URLS from "../../config/API_URLS";
 import CustomDropdown from "../../components/CustomDropdown";
+import axiosInstance from "../../services/axiosInstance";
 
 function AddProductPage() {
   const formik = useFormik({
@@ -30,7 +30,7 @@ function AddProductPage() {
 
     onSubmit: (values) => {
       console.log("formik submitted ", values);
-      axios
+      axiosInstance
         .post(`${API_URLS.baseURL}${API_URLS.addProduct}`, values)
         .then((response) =>
           console.log("Product added successfully: ", response.data)
