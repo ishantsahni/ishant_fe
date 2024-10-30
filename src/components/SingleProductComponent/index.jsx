@@ -15,6 +15,7 @@ function SingleProductComponent({ productInfo }) {
         src={productInfo.image}
       />
       <p>{productInfo?.name}</p>
+      <p className="text-center">{productInfo?.description}</p>
       <p>{productInfo?.brand}</p>
       <p>{productInfo?.price}</p>
       <p>{productInfo?.category}</p>
