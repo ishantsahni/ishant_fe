@@ -21,27 +21,20 @@ function ProductsPage() {
       price: yup.number("Must be a number"),
       search: yup.string(),
     }),
-
-    onSubmit: (values) => {
-      console.log("formik submitted ", values);
-      // axiosInstance
-      //   .post(`${API_URLS.baseURL}${API_URLS.addProduct}`, values)
-      //   .then((response) =>
-      //     console.log("Product added successfully: ", response.data)
-      //   )
-      //   .catch((error) => console.log("Error adding products: ", error));
-    },
+    onSubmit: () => {},
   });
 
   useEffect(() => {
+    const requestBody = {};
+
+    if (formik.values.category) requestBody.category = formik.values.category;
+    if (formik.values.price) requestBody.price = formik.values.price;
+    if (formik.values.search) requestBody.search = formik.values.search;
+
     axiosInstance
-      .post(API_URLS.getProducts)
+      .post(API_URLS.getProducts, requestBody)
       .then((response) => setAllProducts(response?.data))
       .catch((error) => console.log("Error while fetch all products ", error));
-  }, []);
-
-  useEffect(() => {
-    console.log("formik values ", formik.values);
   }, [formik.values]);
 
   return (
