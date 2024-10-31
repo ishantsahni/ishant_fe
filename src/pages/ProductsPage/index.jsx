@@ -42,8 +42,8 @@ function ProductsPage() {
 
   return (
     <div>
-      <div className="flex">
-        <div className="w-[40%]">
+      <div className="mx-20 my-10 flex justify-between">
+        <div className="w-[20%]">
           <CustomDropdown
             id="category"
             name="category"
