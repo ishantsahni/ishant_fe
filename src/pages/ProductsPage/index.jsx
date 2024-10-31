@@ -40,6 +40,10 @@ function ProductsPage() {
       .catch((error) => console.log("Error while fetch all products ", error));
   }, []);
 
+  useEffect(() => {
+    console.log("formik values ", formik.values);
+  }, [formik.values]);
+
   return (
     <div>
       <div className="mx-20 my-10 flex justify-between">
@@ -72,7 +76,7 @@ function ProductsPage() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.search}
-          label="Brand"
+          label="Search"
           touched={formik.touched.search}
           errors={formik.errors.search}
         />
