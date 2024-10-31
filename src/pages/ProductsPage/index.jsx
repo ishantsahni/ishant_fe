@@ -35,7 +35,7 @@ function ProductsPage() {
 
   useEffect(() => {
     axiosInstance
-      .get(API_URLS.getProducts)
+      .post(API_URLS.getProducts)
       .then((response) => setAllProducts(response?.data))
       .catch((error) => console.log("Error while fetch all products ", error));
   }, []);
