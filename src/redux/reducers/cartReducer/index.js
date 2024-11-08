@@ -8,13 +8,25 @@ const cartReducer = (state = [], action) => {
       return newState;
     case "INCREASE_QUANTITY":
       var newState = state;
-      const addedNewState = newState.map((value) => {
+      var addedNewState = newState.map((value) => {
         console.log("value ", value);
         if ((value.productId = action.payload)) {
           value.quantity = value.quantity + 1;
         }
         return value;
       });
+      return addedNewState;
+    case "DECREASE_QUANTITY":
+      var newState = state;
+      var addedNewState = newState
+        .map((value) => {
+          console.log("value ", value);
+          if ((value.productId = action.payload)) {
+            value.quantity = value.quantity - 1;
+          }
+          return value;
+        })
+        .filter((item) => item.quantity !== 0);
       return addedNewState;
     default:
       return state;

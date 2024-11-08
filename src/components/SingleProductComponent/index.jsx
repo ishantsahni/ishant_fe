@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   addItemToCart,
+  decreaseQuantity,
   increaseQuantity,
 } from "../../redux/actions/cartActions";
 
@@ -34,7 +35,10 @@ function SingleProductComponent({ productInfo }) {
         {quantity > 0 && (
           <div className="flex items-center justify-center">
             <button
-              onClick={(prev) => setQuantity(quantity - 1)}
+              onClick={(prev) => {
+                setQuantity(quantity - 1);
+                dispatch(decreaseQuantity(productInfo?._id));
+              }}
               className="h-5 w-5 cursor-pointer rounded-full bg-amber-500 flex items-center justify-center"
             >
               -
