@@ -14,7 +14,7 @@ function SingleProductComponent({ productInfo }) {
       <img
         onClick={() => navigate(`/product/${productInfo?._id}`)}
         onKeyDown={() => navigate(`/product/${productInfo?._id}`)}
-        className="w-[5rem] h-[5rem]"
+        className="w-[5rem] h-[5rem] cursor-pointer"
         alt="eCommProductImage"
         src={productInfo.image}
       />
