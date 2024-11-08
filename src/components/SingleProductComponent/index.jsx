@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addItemToCart } from "../../redux/actions/cartActions";
 
 function SingleProductComponent({ productInfo }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [quantity, setQuantity] = useState(0);
 
@@ -50,6 +53,12 @@ function SingleProductComponent({ productInfo }) {
             } else {
               setQuantity(1);
               setIsAddedToCart(true);
+              dispatch(
+                addItemToCart({
+                  productId: productInfo?._id,
+                  quantity: 1,
+                })
+              );
             }
           }}
           className="mx-auto cursor-pointer"
