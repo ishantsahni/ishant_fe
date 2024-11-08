@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addItemToCart } from "../../redux/actions/cartActions";
+import {
+  addItemToCart,
+  increaseQuantity,
+} from "../../redux/actions/cartActions";
 
 function SingleProductComponent({ productInfo }) {
   const navigate = useNavigate();
@@ -38,7 +41,10 @@ function SingleProductComponent({ productInfo }) {
             </button>
             <p className="mx-4">{quantity}</p>
             <button
-              onClick={(prev) => setQuantity(quantity + 1)}
+              onClick={(prev) => {
+                setQuantity(quantity + 1);
+                dispatch(increaseQuantity(productInfo?._id));
+              }}
               className="h-5 w-5 cursor-pointer rounded-full bg-amber-500 flex items-center justify-center"
             >
               +

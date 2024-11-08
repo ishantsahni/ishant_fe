@@ -4,3 +4,17 @@ export const addItemToCart = (data) => {
     payload: data,
   };
 };
+
+export const increaseQuantity = (data) => {
+  return {
+    type: "INCREASE_QUANTITY",
+    payload: data,
+  };
+};
+
+export const decreaseQuantity = (data) => {
+  return {
+    type: "DECREASE_QUANTITY",
+    payload: data,
+  };
+};
