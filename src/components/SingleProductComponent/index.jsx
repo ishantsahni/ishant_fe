@@ -5,6 +5,7 @@ import {
   addItemToCart,
   decreaseQuantity,
   increaseQuantity,
+  removeItem,
 } from "../../redux/actions/cartActions";
 
 function SingleProductComponent({ productInfo }) {
@@ -60,6 +61,7 @@ function SingleProductComponent({ productInfo }) {
             if (isAddedToCart) {
               setQuantity(0);
               setIsAddedToCart(false);
+              dispatch(removeItem(productInfo?._id));
             } else {
               setQuantity(1);
               setIsAddedToCart(true);

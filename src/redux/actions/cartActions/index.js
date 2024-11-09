@@ -18,3 +18,10 @@ export const decreaseQuantity = (data) => {
     payload: data,
   };
 };
+
+export const removeItem = (data) => {
+  return {
+    type: "REMOVE_ITEM",
+    payload: data,
+  };
+};
