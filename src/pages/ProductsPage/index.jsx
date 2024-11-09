@@ -6,9 +6,15 @@ import axiosInstance from "../../services/axiosInstance";
 import { useFormik } from "formik";
 import CustomTextField from "../../components/CustomTextField";
 import CustomDropdown from "../../components/CustomDropdown";
+import { useSelector } from "react-redux";
 
 function ProductsPage() {
   const [allProducts, setAllProducts] = useState([]);
+  const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    console.log("cart ", cart);
+  }, [cart]);
 
   const formik = useFormik({
     initialValues: {

@@ -3,31 +3,29 @@
 const cartReducer = (state = [], action) => {
   switch (action.type) {
     case "ADD_ITEM_TO_CART":
-      var newState = state;
-      newState.push(action.payload);
-      return newState;
+      return [...state, action.payload];
     case "INCREASE_QUANTITY":
-      var newState = state;
-      var addedNewState = newState.map((value) => {
-        console.log("value ", value);
-        if ((value.productId = action.payload)) {
-          value.quantity = value.quantity + 1;
+      return state.map((value) => {
+        if (value.productId === action.payload) {
+          return {
+            ...value,
+            quantity: value.quantity + 1,
+          };
         }
-        return value;
+        return { ...value };
       });
-      return addedNewState;
     case "DECREASE_QUANTITY":
-      var newState = state;
-      var addedNewState = newState
+      return state
         .map((value) => {
-          console.log("value ", value);
-          if ((value.productId = action.payload)) {
-            value.quantity = value.quantity - 1;
+          if (value.productId === action.payload) {
+            return {
+              ...value,
+              quantity: value.quantity - 1,
+            };
           }
-          return value;
+          return { ...value };
         })
         .filter((item) => item.quantity !== 0);
-      return addedNewState;
     default:
       return state;
   }
