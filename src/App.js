@@ -6,6 +6,7 @@ import FileUploadPage from "./pages/FileUploadPage";
 import ProductsPage from "./pages/ProductsPage";
 import ShowSingleProductPage from "./pages/ShowSingleProductPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           path="/product/:productId"
           element={<ProtectedRoute element={ShowSingleProductPage} />}
         />
+        <Route path="/cart" element={<ProtectedRoute element={CartPage} />} />
       </Routes>
     </Router>
   );
