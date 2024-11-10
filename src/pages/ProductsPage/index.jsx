@@ -6,15 +6,11 @@ import axiosInstance from "../../services/axiosInstance";
 import { useFormik } from "formik";
 import CustomTextField from "../../components/CustomTextField";
 import CustomDropdown from "../../components/CustomDropdown";
-import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function ProductsPage() {
+  const navigate = useNavigate();
   const [allProducts, setAllProducts] = useState([]);
-  const cart = useSelector((state) => state.cart);
-
-  useEffect(() => {
-    console.log("cart ", cart);
-  }, [cart]);
 
   const formik = useFormik({
     initialValues: {
@@ -84,6 +80,14 @@ function ProductsPage() {
         {allProducts.map((item) => (
           <SingleProductComponent key={item?._id} productInfo={item} />
         ))}
+      </div>
+      <div>
+        <button
+          className="w-full bg-lime-400 h-20"
+          onClick={() => navigate("/cart")}
+        >
+          Go To Cart
+        </button>
       </div>
     </div>
   );
