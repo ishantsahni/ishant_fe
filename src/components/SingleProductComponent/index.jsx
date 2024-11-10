@@ -20,8 +20,8 @@ function SingleProductComponent({ productInfo }) {
       className="mx-auto h-fit w-[10rem] cursor-pointer bg-orange-200 flex flex-col items-center justify-center py-4 rounded-lg"
     >
       <img
-        onClick={() => navigate(`/product/${productInfo?._id}`)}
-        onKeyDown={() => navigate(`/product/${productInfo?._id}`)}
+        onClick={() => navigate(`/product/${productInfo?.productId}`)}
+        onKeyDown={() => navigate(`/product/${productInfo?.productId}`)}
         className="w-[5rem] h-[5rem] cursor-pointer"
         alt="eCommProductImage"
         src={productInfo.image}
@@ -38,7 +38,7 @@ function SingleProductComponent({ productInfo }) {
             <button
               onClick={(prev) => {
                 setQuantity(quantity - 1);
-                dispatch(decreaseQuantity(productInfo?._id));
+                dispatch(decreaseQuantity(productInfo?.productId));
               }}
               className="h-5 w-5 cursor-pointer rounded-full bg-amber-500 flex items-center justify-center"
             >
@@ -48,7 +48,7 @@ function SingleProductComponent({ productInfo }) {
             <button
               onClick={(prev) => {
                 setQuantity(quantity + 1);
-                dispatch(increaseQuantity(productInfo?._id));
+                dispatch(increaseQuantity(productInfo?.productId));
               }}
               className="h-5 w-5 cursor-pointer rounded-full bg-amber-500 flex items-center justify-center"
             >
@@ -61,13 +61,13 @@ function SingleProductComponent({ productInfo }) {
             if (isAddedToCart) {
               setQuantity(0);
               setIsAddedToCart(false);
-              dispatch(removeItem(productInfo?._id));
+              dispatch(removeItem(productInfo?.productId));
             } else {
               setQuantity(1);
               setIsAddedToCart(true);
               dispatch(
                 addItemToCart({
-                  productId: productInfo?._id,
+                  productId: productInfo?.productId,
                   quantity: 1,
                 })
               );

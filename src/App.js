@@ -12,13 +12,25 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route path="/product/add" element={<ProtectedRoute element={AddProductPage} />} />
+        <Route
+          path="/product/add"
+          element={<ProtectedRoute element={AddProductPage} />}
+        />
         <Route path="/rough" element={<ProtectedRoute element={RoughPage} />} />
-        <Route path="/fileUploadPage" element={<ProtectedRoute element={FileUploadPage} />} />
-        <Route path="/products" element={<ProtectedRoute element={ProductsPage} />} />
-        <Route path="/product/:id" element={<ProtectedRoute element={ShowSingleProductPage} />} />
+        <Route
+          path="/fileUploadPage"
+          element={<ProtectedRoute element={FileUploadPage} />}
+        />
+        <Route
+          path="/products"
+          element={<ProtectedRoute element={ProductsPage} />}
+        />
+        <Route
+          path="/product/:productId"
+          element={<ProtectedRoute element={ShowSingleProductPage} />}
+        />
       </Routes>
-    </Router >
+    </Router>
   );
 }
 

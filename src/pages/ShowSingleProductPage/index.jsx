@@ -5,19 +5,19 @@ import API_URLS from "../../config/API_URLS";
 import axiosInstance from "../../services/axiosInstance";
 
 function ShowSingleProductPage() {
-  const { id } = useParams();
+  const { productId } = useParams();
   const [productInfo, setProductInfo] = useState({});
 
   useEffect(() => {
-    if (id) {
+    if (productId) {
       axiosInstance
-        .get(`${API_URLS.getProduct}/${id}`)
+        .get(`${API_URLS.getProduct}/${productId}`)
         .then((response) => setProductInfo(response?.data))
         .catch((error) =>
           console.log("Error in fetching single product ", error)
         );
     }
-  }, [id]);
+  }, [productId]);
 
   return (
     <div className="p-10">
