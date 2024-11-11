@@ -3,6 +3,7 @@ const API_URLS = {
   baseURL: "http://localhost:4000",
   addProduct: "/product/add",
   getProducts: "/product/getProducts",
+  getProductsById: "/product/getProductsById",
   getProduct: "/product/get",
   signUp: "/signUp",
   signIn: "/signIn",
