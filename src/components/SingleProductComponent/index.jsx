@@ -8,7 +8,7 @@ import {
   removeItem,
 } from "../../redux/actions/cartActions";
 
-function SingleProductComponent({ productInfo }) {
+function SingleProductComponent({ productInfo, showOnlyQuantity = false }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isAddedToCart, setIsAddedToCart] = useState(false);
@@ -33,50 +33,58 @@ function SingleProductComponent({ productInfo }) {
       <p>{productInfo?.category}</p>
       <p>{productInfo?.brand}</p>
       <div className="flex flex-col items-center justify-center">
-        {quantity > 0 && (
+        {(quantity > 0 || showOnlyQuantity) && (
           <div className="flex items-center justify-center">
-            <button
-              onClick={(prev) => {
-                setQuantity(quantity - 1);
-                dispatch(decreaseQuantity(productInfo?.productId));
-              }}
-              className="h-5 w-5 cursor-pointer rounded-full bg-amber-500 flex items-center justify-center"
-            >
-              -
-            </button>
-            <p className="mx-4">{quantity}</p>
-            <button
-              onClick={(prev) => {
-                setQuantity(quantity + 1);
-                dispatch(increaseQuantity(productInfo?.productId));
-              }}
-              className="h-5 w-5 cursor-pointer rounded-full bg-amber-500 flex items-center justify-center"
-            >
-              +
-            </button>
+            {!showOnlyQuantity && (
+              <button
+                onClick={(prev) => {
+                  setQuantity(quantity - 1);
+                  dispatch(decreaseQuantity(productInfo?.productId));
+                }}
+                className="h-5 w-5 cursor-pointer rounded-full bg-amber-500 flex items-center justify-center"
+              >
+                -
+              </button>
+            )}
+            <p className="mx-4">
+              {showOnlyQuantity ? productInfo?.quantity : quantity}
+            </p>
+            {!showOnlyQuantity && (
+              <button
+                onClick={(prev) => {
+                  setQuantity(quantity + 1);
+                  dispatch(increaseQuantity(productInfo?.productId));
+                }}
+                className="h-5 w-5 cursor-pointer rounded-full bg-amber-500 flex items-center justify-center"
+              >
+                +
+              </button>
+            )}
           </div>
         )}
-        <button
-          onClick={() => {
-            if (isAddedToCart) {
-              setQuantity(0);
-              setIsAddedToCart(false);
-              dispatch(removeItem(productInfo?.productId));
-            } else {
-              setQuantity(1);
-              setIsAddedToCart(true);
-              dispatch(
-                addItemToCart({
-                  productId: productInfo?.productId,
-                  quantity: 1,
-                })
-              );
-            }
-          }}
-          className="mx-auto cursor-pointer"
-        >
-          {isAddedToCart ? "Remove" : "Add"}
-        </button>
+        {!showOnlyQuantity && (
+          <button
+            onClick={() => {
+              if (isAddedToCart) {
+                setQuantity(0);
+                setIsAddedToCart(false);
+                dispatch(removeItem(productInfo?.productId));
+              } else {
+                setQuantity(1);
+                setIsAddedToCart(true);
+                dispatch(
+                  addItemToCart({
+                    productId: productInfo?.productId,
+                    quantity: 1,
+                  })
+                );
+              }
+            }}
+            className="mx-auto cursor-pointer"
+          >
+            {isAddedToCart ? "Remove" : "Add"}
+          </button>
+        )}
       </div>
     </div>
   );

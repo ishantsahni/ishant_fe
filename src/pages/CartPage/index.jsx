@@ -11,13 +11,26 @@ const CartPage = () => {
   useEffect(() => {
     const requestBody = {};
 
+    console.log("cart ", cart);
+
     if (Array.isArray(cart) && cart.length > 0) {
       requestBody["productIds"] = cart.map((value) => value.productId);
     }
 
     axiosInstance
       .post(API_URLS.getProductsById, requestBody)
-      .then((response) => setAllProducts(response?.data))
+      .then((response) => {
+        const productsWithQuantity = response.data.map((product) => {
+          const matchingCartItem = cart.find(
+            (item) => item.productId === product.productId
+          );
+          return {
+            ...product,
+            quantity: matchingCartItem ? matchingCartItem?.quantity : 0,
+          };
+        });
+        setAllProducts(productsWithQuantity);
+      })
       .catch((error) => console.log("Error while fetch cart products ", error));
   }, [cart]);
 
@@ -25,7 +38,11 @@ const CartPage = () => {
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
         {allProducts.map((item) => (
-          <SingleProductComponent key={item?.productId} productInfo={item} />
+          <SingleProductComponent
+            showOnlyQuantity={true}
+            key={item?.productId}
+            productInfo={item}
+          />
         ))}
       </div>
     </div>
