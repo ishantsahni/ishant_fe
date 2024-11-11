@@ -45,6 +45,14 @@ const CartPage = () => {
           />
         ))}
       </div>
+      <div>
+        <button
+          className="w-full bg-lime-400 h-20"
+          onClick={() => console.log("but items")}
+        >
+          Buy Items
+        </button>
+      </div>
     </div>
   );
 };
