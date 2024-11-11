@@ -1,28 +1,35 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axiosInstance from "../../services/axiosInstance";
 import API_URLS from "../../config/API_URLS";
+import SingleProductComponent from "../../components/SingleProductComponent";
 
 const CartPage = () => {
   const cart = useSelector((state) => state.cart);
+  const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
     const requestBody = {};
 
-    console.log("cart in use effect ", cart);
-
     if (Array.isArray(cart) && cart.length > 0) {
-      console.log("cart value ", cart);
       requestBody["productIds"] = cart.map((value) => value.productId);
     }
 
     axiosInstance
       .post(API_URLS.getProductsById, requestBody)
-      .then((response) => console.log(response?.data))
+      .then((response) => setAllProducts(response?.data))
       .catch((error) => console.log("Error while fetch cart products ", error));
   }, [cart]);
 
-  return <div>Cart Page</div>;
+  return (
+    <div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+        {allProducts.map((item) => (
+          <SingleProductComponent key={item?.productId} productInfo={item} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default CartPage;
