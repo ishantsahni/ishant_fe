@@ -7,6 +7,7 @@ import ProductsPage from "./pages/ProductsPage";
 import ShowSingleProductPage from "./pages/ShowSingleProductPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CartPage from "./pages/CartPage";
+import OrdersPage from "./pages/OrdersPage";
 
 function App() {
   return (
@@ -31,6 +32,10 @@ function App() {
           element={<ProtectedRoute element={ShowSingleProductPage} />}
         />
         <Route path="/cart" element={<ProtectedRoute element={CartPage} />} />
+        <Route
+          path="/orders"
+          element={<ProtectedRoute element={OrdersPage} />}
+        />
       </Routes>
     </Router>
   );
