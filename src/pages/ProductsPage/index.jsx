@@ -7,9 +7,12 @@ import { useFormik } from "formik";
 import CustomTextField from "../../components/CustomTextField";
 import CustomDropdown from "../../components/CustomDropdown";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { emptyCart } from "../../redux/actions/cartActions";
 
 function ProductsPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [allProducts, setAllProducts] = useState([]);
 
   const formik = useFormik({
@@ -38,6 +41,10 @@ function ProductsPage() {
       .then((response) => setAllProducts(response?.data))
       .catch((error) => console.log("Error while fetch all products ", error));
   }, [formik.values]);
+
+  useEffect(() => {
+    dispatch(emptyCart());
+  }, []);
 
   return (
     <div>
