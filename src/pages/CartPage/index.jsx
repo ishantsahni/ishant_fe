@@ -34,6 +34,16 @@ const CartPage = () => {
       .catch((error) => console.log("Error while fetch cart products ", error));
   }, [cart]);
 
+  const handleBuyItems = () => {
+    console.log("handle buy items clicked");
+    axiosInstance
+      .post(`${API_URLS.baseURL}${API_URLS.orderItems}`, { orderDetails: cart })
+      .then((response) =>
+        console.log("Products ordered successfully: ", response.data)
+      )
+      .catch((error) => console.log("Error while ordering products: ", error));
+  };
+
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
@@ -48,7 +58,7 @@ const CartPage = () => {
       <div>
         <button
           className="w-full bg-lime-400 h-20"
-          onClick={() => console.log("but items")}
+          onClick={() => handleBuyItems()}
         >
           Buy Items
         </button>

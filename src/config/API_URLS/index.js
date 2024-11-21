@@ -7,6 +7,7 @@ const API_URLS = {
   getProduct: "/product/get",
   signUp: "/signUp",
   signIn: "/signIn",
+  orderItems: "/order/add",
 };
 
 export default API_URLS;
