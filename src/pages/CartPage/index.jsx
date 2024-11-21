@@ -35,7 +35,6 @@ const CartPage = () => {
   }, [cart]);
 
   const handleBuyItems = () => {
-    console.log("handle buy items clicked");
     axiosInstance
       .post(`${API_URLS.baseURL}${API_URLS.orderItems}`, { orderDetails: cart })
       .then((response) =>
