@@ -14,6 +14,8 @@ function SingleProductComponent({ productInfo, showOnlyQuantity = false }) {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [quantity, setQuantity] = useState(0);
 
+  console.log("product info in single product component ", productInfo);
+
   return (
     <div
       role="presentation"
