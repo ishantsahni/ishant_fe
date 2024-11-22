@@ -28,7 +28,10 @@ const OrdersPage = () => {
             <p>Order {index + 1}</p>
             <div className="flex">
               {orders.map((order) => (
-                <SingleProductComponent productInfo={order.productDetails} />
+                <SingleProductComponent
+                  showOnlyQuantity
+                  productInfo={order.productDetails}
+                />
               ))}
             </div>
           </div>
