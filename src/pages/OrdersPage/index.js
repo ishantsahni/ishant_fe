@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../services/axiosInstance";
 import API_URLS from "../../config/API_URLS";
+import SingleProductComponent from "../../components/SingleProductComponent";
 
 const OrdersPage = () => {
   const [allOrders, setAllOrders] = useState([]);
@@ -18,7 +19,23 @@ const OrdersPage = () => {
       );
   }, []);
 
-  return <div>Orders Page</div>;
+  return (
+    <div>
+      Orders Page
+      {allOrders.map((orders, index) => {
+        return (
+          <div>
+            <p>Order {index + 1}</p>
+            <div className="flex">
+              {orders.map((order) => (
+                <SingleProductComponent productInfo={order} />
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default OrdersPage;
