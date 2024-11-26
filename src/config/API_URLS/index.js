@@ -8,6 +8,7 @@ const API_URLS = {
   signUp: "/signUp",
   signIn: "/signIn",
   orderItems: "/order/add",
+  verifyPayment: "/order/verify-payment",
   getOrders: "/order",
 };
 

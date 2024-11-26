@@ -78,6 +78,7 @@ function SingleProductComponent({ productInfo, showOnlyQuantity = false }) {
                   addItemToCart({
                     productId: productInfo?.productId,
                     quantity: 1,
+                    price: productInfo?.price,
                   })
                 );
               }
