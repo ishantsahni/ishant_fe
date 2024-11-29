@@ -81,7 +81,7 @@ const CartPage = () => {
               verificationData
             );
 
-            if ((await verificationResult).data.success) {
+            if (verificationResult.data.success) {
               alert("Payment successful and verified!");
             } else {
               alert("Payment verification failed");
