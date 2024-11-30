@@ -1,6 +1,10 @@
 import { FaStar } from "react-icons/fa";
 
-function ReviewComponent({ userName, rating = [], feedback }) {
+function ReviewComponent({
+  userName = "ishant",
+  rating = [2],
+  feedback = "I used it, great product!!",
+}) {
   return (
     <div className="p-2 bg-lime-200 rounded-xl">
       <p>{userName}</p>

@@ -3,6 +3,8 @@ import SingleProductComponent from "../../components/SingleProductComponent";
 import { useEffect, useState } from "react";
 import API_URLS from "../../config/API_URLS";
 import axiosInstance from "../../services/axiosInstance";
+import ReviewComponent from "../../components/ReviewComponent";
+import AddReview from "../../components/AddReview";
 
 function ShowSingleProductPage() {
   const { productId } = useParams();
@@ -22,6 +24,12 @@ function ShowSingleProductPage() {
   return (
     <div className="p-10">
       <SingleProductComponent productInfo={productInfo} />
+      <div className="mt-8 mb-4">
+        <ReviewComponent />
+      </div>
+      <div>
+        <AddReview />
+      </div>
     </div>
   );
 }
