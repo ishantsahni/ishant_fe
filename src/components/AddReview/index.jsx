@@ -12,7 +12,10 @@ function AddReview() {
       feedback: "",
     },
     validationSchema: yup.object({
-      rating: yup.number("Must be a number").required("Required"),
+      rating: yup
+        .number("Must be a number")
+        .min(1, "Rating must be given")
+        .required("Required"),
       feedback: yup.string().required("Required"),
     }),
 
