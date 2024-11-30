@@ -1,3 +1,4 @@
+import AddReview from "../../components/AddReview";
 import CustomTextField from "../../components/CustomTextField";
 import ReviewComponent from "../../components/ReviewComponent";
 
@@ -6,6 +7,7 @@ function RoughPage() {
     <div className="mt-[50px] mx-[50px]">
       <CustomTextField />
       <ReviewComponent />
+      <AddReview />
     </div>
   );
 }
