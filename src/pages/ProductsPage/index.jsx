@@ -9,6 +9,7 @@ import CustomDropdown from "../../components/CustomDropdown";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { emptyCart } from "../../redux/actions/cartActions";
+import { categoryOptions } from "../../helpers";
 
 function ProductsPage() {
   const navigate = useNavigate();
@@ -56,6 +57,7 @@ function ProductsPage() {
             onChange={formik.handleChange}
             onBlur={formik.handleChange}
             value={formik.values.category}
+            options={categoryOptions}
             label="Category"
             touched={formik.touched.category}
             errors={formik.touched.errors}

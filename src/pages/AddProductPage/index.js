@@ -6,6 +6,7 @@ import FileUpload from "../FileUpload";
 import API_URLS from "../../config/API_URLS";
 import CustomDropdown from "../../components/CustomDropdown";
 import axiosInstance from "../../services/axiosInstance";
+import { categoryOptions } from "../../helpers";
 
 function AddProductPage() {
   const formik = useFormik({
@@ -87,6 +88,7 @@ function AddProductPage() {
           onChange={formik.handleChange}
           onBlur={formik.handleChange}
           value={formik.values.category}
+          options={categoryOptions}
           label="Category"
           touched={formik.touched.category}
           errors={formik.touched.errors}
