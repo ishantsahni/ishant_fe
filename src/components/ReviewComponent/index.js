@@ -1,14 +1,15 @@
 import { FaStar } from "react-icons/fa";
 
-function ReviewComponent() {
+function ReviewComponent({ userName, rating, feedback }) {
   return (
     <div className="p-2 bg-lime-200 rounded-xl">
-      <p>Ishant Sahni</p>
+      <p>{rating}</p>
       <div className="flex my-2">
-        <FaStar />
-        <FaStar />
+        {rating.map(() => (
+          <FaStar />
+        ))}
       </div>
-      <p>I used it, the product is really good!!</p>
+      <p>{feedback}</p>
     </div>
   );
 }
