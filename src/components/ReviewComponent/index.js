@@ -1,9 +1,9 @@
 import { FaStar } from "react-icons/fa";
 
-function ReviewComponent({ userName, rating, feedback }) {
+function ReviewComponent({ userName, rating = [], feedback }) {
   return (
     <div className="p-2 bg-lime-200 rounded-xl">
-      <p>{rating}</p>
+      <p>{userName}</p>
       <div className="flex my-2">
         {rating.map(() => (
           <FaStar />
