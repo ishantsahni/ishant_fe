@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 function ReviewComponent({
   userName = "ishant",
   rating = [2],
-  feedback = "I used it, great product!!",
+  comment = "I used it, great product!!",
 }) {
   return (
     <div className="p-2 bg-lime-200 rounded-xl">
@@ -13,7 +13,7 @@ function ReviewComponent({
           <FaStar />
         ))}
       </div>
-      <p>{feedback}</p>
+      <p>{comment}</p>
     </div>
   );
 }

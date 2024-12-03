@@ -9,14 +9,14 @@ function AddReview() {
   const formik = useFormik({
     initialValues: {
       rating: 0,
-      feedback: "",
+      comment: "",
     },
     validationSchema: yup.object({
       rating: yup
         .number("Must be a number")
         .min(1, "Rating must be given")
         .required("Required"),
-      feedback: yup.string().required("Required"),
+      comment: yup.string().required("Required"),
     }),
 
     onSubmit: (values) => {
@@ -39,14 +39,14 @@ function AddReview() {
         />
         <div className="my-4">
           <CustomTextField
-            id="feedback"
-            name="feedback"
+            id="comment"
+            name="comment"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.feedback}
+            value={formik.values.comment}
             label="Feedback"
-            touched={formik.touched.feedback}
-            errors={formik.errors.feedback}
+            touched={formik.touched.comment}
+            errors={formik.errors.comment}
           />
         </div>
 
