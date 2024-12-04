@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 import axiosInstance from "../../services/axiosInstance";
 import API_URLS from "../../config/API_URLS";
 
-function AddReview({ productId }) {
+function AddReview({ productId, refetchReviews, setRefetchReviews }) {
   const formik = useFormik({
     initialValues: {
       rating: 0,
@@ -33,9 +33,12 @@ function AddReview({ productId }) {
           productId,
           userId: sessionStorage.getItem("userId"),
         })
-        .then((response) =>
-          console.log("Review added successfully: ", response.data)
-        )
+        .then((response) => {
+          console.log("Review added successfully: ", response.data);
+          formik.setFieldValue("rating", 0);
+          formik.setFieldValue("comment", "");
+          setRefetchReviews(!refetchReviews);
+        })
         .catch((error) => console.log("Error adding review: ", error));
     },
   });

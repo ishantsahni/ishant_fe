@@ -10,6 +10,7 @@ function ShowSingleProductPage() {
   const { productId } = useParams();
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState([]);
+  const [refetchReviews, setRefetchReviews] = useState(false);
 
   useEffect(() => {
     if (productId) {
@@ -30,7 +31,7 @@ function ShowSingleProductPage() {
         })
         .catch((error) => console.log("Error fetching reviews: ", error));
     }
-  }, [productId]);
+  }, [productId, refetchReviews]);
 
   return (
     <div className="p-10">
@@ -40,7 +41,11 @@ function ShowSingleProductPage() {
           reviews.map((value) => <ReviewComponent reviewInfo={value} />)}
       </div>
       <div>
-        <AddReview productId={productId} />
+        <AddReview
+          productId={productId}
+          refetchReviews={refetchReviews}
+          setRefetchReviews={setRefetchReviews}
+        />
       </div>
     </div>
   );
