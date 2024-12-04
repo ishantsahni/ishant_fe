@@ -9,6 +9,7 @@ import AddReview from "../../components/AddReview";
 function ShowSingleProductPage() {
   const { productId } = useParams();
   const [productInfo, setProductInfo] = useState({});
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     if (productId) {
@@ -18,6 +19,16 @@ function ShowSingleProductPage() {
         .catch((error) =>
           console.log("Error in fetching single product ", error)
         );
+
+      axiosInstance
+        .post(`${API_URLS.baseURL}${API_URLS.getReviews}`, {
+          productId,
+        })
+        .then((response) => {
+          console.log("Review added successfully: ", response.data?.reviews);
+          setReviews(response.data?.reviews);
+        })
+        .catch((error) => console.log("Error fetching reviews: ", error));
     }
   }, [productId]);
 
@@ -25,7 +36,8 @@ function ShowSingleProductPage() {
     <div className="p-10">
       <SingleProductComponent productInfo={productInfo} />
       <div className="mt-8 mb-4">
-        <ReviewComponent />
+        {reviews.length > 0 &&
+          reviews.map((value) => <ReviewComponent reviewInfo={value} />)}
       </div>
       <div>
         <AddReview productId={productId} />
