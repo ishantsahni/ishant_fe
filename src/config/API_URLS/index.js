@@ -10,6 +10,8 @@ const API_URLS = {
   orderItems: "/order/add",
   verifyPayment: "/order/verify-payment",
   getOrders: "/order",
+  addReview: "/review/addReview",
+  getReviews: "/review/getReviews",
 };
 
 export default API_URLS;

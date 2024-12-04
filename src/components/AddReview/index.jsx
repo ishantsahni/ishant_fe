@@ -4,8 +4,10 @@ import CustomDropdown from "../CustomDropdown";
 import CustomTextField from "../CustomTextField";
 import { ratingOptions } from "../../helpers";
 import { Button } from "@mui/material";
+import axiosInstance from "../../services/axiosInstance";
+import API_URLS from "../../config/API_URLS";
 
-function AddReview() {
+function AddReview({ productId }) {
   const formik = useFormik({
     initialValues: {
       rating: 0,
@@ -20,7 +22,21 @@ function AddReview() {
     }),
 
     onSubmit: (values) => {
-      console.log("formik submitted ", values);
+      console.log("post request added ", {
+        ...values,
+        productId,
+        userId: sessionStorage.getItem("userId"),
+      });
+      axiosInstance
+        .post(`${API_URLS.baseURL}${API_URLS.addReview}`, {
+          ...values,
+          productId,
+          userId: sessionStorage.getItem("userId"),
+        })
+        .then((response) =>
+          console.log("Review added successfully: ", response.data)
+        )
+        .catch((error) => console.log("Error adding review: ", error));
     },
   });
   return (

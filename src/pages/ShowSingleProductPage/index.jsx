@@ -28,7 +28,7 @@ function ShowSingleProductPage() {
         <ReviewComponent />
       </div>
       <div>
-        <AddReview />
+        <AddReview productId={productId} />
       </div>
     </div>
   );

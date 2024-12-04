@@ -70,6 +70,7 @@ function HomePage() {
         )
         .then((response) => {
           sessionStorage.setItem("accessToken", response?.data?.accessToken);
+          sessionStorage.setItem("userId", response?.data?.user?.userId);
           navigate("/products");
         })
         .catch((error) => console.log("Error occurred ", error));
