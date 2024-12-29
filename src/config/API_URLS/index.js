@@ -1,6 +1,6 @@
 const API_URLS = {
   // baseUrl: process.env.REACT_APP_BASE_URL,
-  baseURL: "http://localhost:4000",
+  baseURL: "http://13.48.190.214",
   addProduct: "/product/add",
   getProducts: "/product/getProducts",
   getProductsById: "/product/getProductsById",
